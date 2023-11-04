@@ -1,0 +1,1 @@
+get-process | where { $_.ProcessName -like "C*" } | sort -property ProcessName | select { $_.ProcessName } -unique
