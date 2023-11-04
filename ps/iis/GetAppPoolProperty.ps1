@@ -1,0 +1,1 @@
+get-item -path iis:apppools\defaultapppool | format-list -Property *
