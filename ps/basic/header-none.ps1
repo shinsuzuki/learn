@@ -1,0 +1,2 @@
+# ヘッダを表示せず、ヘッダの空行、末尾の空行を削除した結果
+(get-process | where { $_.ProcessName -like "C*" } | sort -property ProcessName | select { $_.ProcessName } -unique | select | format-table -HideTableHeaders | out-string).trim() > result.txt
