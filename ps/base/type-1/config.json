@@ -1,0 +1,8 @@
+{
+  "dbServer": "dmyServer",
+  "database": "dmyDb",
+  "user": "hogeUser",
+  "password": "hogePassword",
+  "timeout": 300,
+  "url": "http:xxx.xxx.xx"
+}
