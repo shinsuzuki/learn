@@ -223,4 +223,134 @@ isEmpty = "abc"
 if isEmpty is not None:
     print("isEmpty is not None")
 
+# ========== while (break,continue)
+wc = 1
+while True:
+    wc += 1
+    print(f"while({wc})")
+    if wc > 3:
+        break
+else:
+    print("exit while(break以外の場合は実行)")
+
+# ========= input
+# while True:
+#     word = input("enter:")
+#     print("input_word:" + word)
+#     if word == "ok":
+#         break
+
+# ========== for
+for item in range(3):
+    print(item)
+else:
+    print("exit for(break以外の場合は実行)")
+
+# enumerateでインデックスをとれる
+list2 = ["appple", "banana", "orange"]
+for i, item in enumerate(list2):
+    print(f"index:{i},{item}")
+
+# zip、複数のリストから取得できる
+days = [1, 2, 3]
+colors = ["red", "blue", "yellow"]
+for day, color in zip(days, colors):
+    print(f"{day},{color}")
+
+# 辞書からキーと値を取得
+dic2 = dict(a=1, b=2, c=3)
+for k, item in dic2.items():
+    print(f"{k},{item}")
+
+
+# ======================================== 関数について
+def something(msg):
+    print("something msg:" + msg)
+    return "result something"
+
+
+print(something("hello"))
+
+
+# キーワード引数
+def something2(a=1, b=2):
+    print(f"{a},{b}")
+
+
+something2()
+something2(a=99)
+something2(b=99)
+something2(a=99, b=100)
+
+
+def something3(*args):
+    for a in args:
+        print(a)
+
+
+list = ("say", "hello")
+something3(*list)
+
+
+def something4(**kwargs):
+    for k, v in kwargs.items():
+        print(f"{k},{v}")
+
+
+dic = dict(a=1, b=2)
+something4(**dic)
+
+
+# デコレータ
+def deco1(func):
+    def wrapper(a, b):
+        print("before")
+        func(a, b)
+        print("after")
+
+    return wrapper
+
+
+# @deco1
+# def add_count(a, b):
+#     print(a + b)
+
+# add_count(1, 2)
+
+
+def add_count(a, b):
+    print(a + b)
+
+
+deco1(add_count)(100, 200)
+
+
+# ラムダ
+f = lambda x: x * 2
+print(f(30))
+
+
+# ジェネレータ
+def gen1():
+    yield "apple"
+    yield "banana"
+    yield "orange"
+
+
+for g in gen1():
+    print(g)
+
+# ======================================== 例外について
+import traceback
+
+try:
+    raise Exception("myError!")
+    print(x)
+except Exception as ex:
+    print(ex)
+    traceback.print_exc()
+finally:
+    print("The try except is finished")
+
+
 print("====> end")
