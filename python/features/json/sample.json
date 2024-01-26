@@ -1,0 +1,11 @@
+{
+  "app": "myApp",
+  "db": {
+    "host": "localhost",
+    "port": 9999,
+    "authentication": {
+      "user": "admin",
+      "password": "mypassword"
+    }
+  }
+}
