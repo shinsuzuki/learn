@@ -1,0 +1,6 @@
+server:
+  host: aa.bb.cc.dd
+  port: 5001
+
+user:
+  name: sato
