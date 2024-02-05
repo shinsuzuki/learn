@@ -1,0 +1,116 @@
+﻿2020-01-02 16:52:06, [1 - Critical], Help, Normal
+2020-01-19 00:22:33, [1 - Critical], Help, Normal
+2020-01-13 04:33:22, [1 - Critical], Help, In Progress
+2020-01-05 21:38:40, [1 - Critical], Smartphone, 
+2020-01-05 04:28:58, [1 - Critical], Software, Normal
+2020-01-04 05:06:36, [1 - Critical], Smartphone, Normal
+2020-01-13 09:56:15, [1 - Critical], Network, 
+2020-01-05 15:46:54, [1 - Critical], Help, On Hold
+2020-02-17 16:27:37, [2 - High], Help, In Progress
+2020-02-06 09:54:34, [2 - High], Hardware, In Progress
+2020-01-08 00:57:45, [2 - High], Help, Normal
+2020-01-11 21:55:16, [2 - High], Software, In Progress
+2020-02-25 08:43:03, [2 - High], Smartphone, Normal
+2020-02-16 09:39:15, [2 - High], Network, Normal
+2020-02-03 20:25:20, [2 - High], Software, 
+2020-02-19 16:57:29, [2 - High], Software, In Progress
+2020-01-09 06:06:13, [2 - High], Help, 
+2020-01-08 06:47:08, [2 - High], Hardware, Normal
+2020-02-24 05:07:13, [2 - High], Help, Normal
+2020-02-03 00:41:31, [2 - High], Network, 
+2020-01-22 16:34:04, [2 - High], Network, In Progress
+2020-01-17 18:29:46, [2 - High], Software, Normal
+2020-02-21 11:02:31, [2 - High], Help, In Progress
+2020-01-24 11:21:16, [2 - High], Hardware, Normal
+2020-02-03 05:19:04, [2 - High], Help, Closed
+2020-01-25 05:25:02, [2 - High], Hardware, 
+2020-02-20 02:25:10, [2 - High], Hardware, In Progress
+2020-02-13 13:53:48, [2 - High], Help, On Hold
+2020-01-08 15:29:31, [2 - High], Software, Normal
+2020-02-18 20:43:51, [2 - High], Help, 
+2020-02-02 04:23:56, [2 - High], Network, Normal
+2020-01-20 21:48:16, [2 - High], Help, 
+2020-02-15 08:42:42, [2 - High], Help, 
+2020-01-03 07:18:57, [2 - High], Help, 
+2020-02-03 08:31:24, [2 - High], Hardware, Normal
+2020-01-16 11:43:29, [2 - High], Help, Closed
+2020-02-08 15:37:17, [2 - High], Help, Normal
+2020-02-07 11:12:33, [2 - High], Software, In Progress
+2020-02-11 08:23:25, [2 - High], Software, In Progress
+2020-01-26 19:01:56, [2 - High], Software, 
+2020-02-21 08:52:42, [2 - High], Network, In Progress
+2020-02-08 16:01:34, [2 - High], Smartphone, In Progress
+2020-01-11 18:50:30, [2 - High], Software, In Progress
+2020-02-05 15:45:46, [3 - Moderate], Help, In Progress
+2020-02-11 07:40:24, [3 - Moderate], Hardware, On Hold
+2020-02-16 04:46:43, [3 - Moderate], Smartphone, In Progress
+2020-01-03 15:55:56, [3 - Moderate], Help, 
+2020-01-17 03:29:37, [3 - Moderate], Hardware, In Progress
+2020-02-07 10:49:35, [3 - Moderate], Help, In Progress
+2020-02-07 18:02:42, [3 - Moderate], Software, Normal
+2020-01-07 14:27:26, [3 - Moderate], Hardware, In Progress
+2020-01-23 12:17:59, [3 - Moderate], Smartphone, 
+2020-01-18 15:53:21, [3 - Moderate], Hardware, In Progress
+2020-01-16 09:06:48, [3 - Moderate], Smartphone, Normal
+2020-01-01 00:18:12, [3 - Moderate], Help, Normal
+2020-01-08 09:44:35, [3 - Moderate], Software, On Hold
+2020-02-18 12:34:23, [3 - Moderate], Smartphone, Normal
+2020-02-14 11:52:54, [3 - Moderate], Help, 
+2020-01-22 15:12:53, [3 - Moderate], Software, 
+2020-01-27 10:54:47, [3 - Moderate], Hardware, In Progress
+2020-02-16 16:45:58, [3 - Moderate], Software, 
+2020-01-13 12:43:22, [3 - Moderate], Help, 
+2020-01-18 22:29:02, [3 - Moderate], Help, In Progress
+2020-02-18 09:19:36, [3 - Moderate], Smartphone, In Progress
+2020-01-01 03:39:56, [3 - Moderate], Software, Normal
+2020-02-06 04:45:12, [3 - Moderate], Network, On Hold
+2020-02-17 19:25:31, [3 - Moderate], Smartphone, Normal
+2020-02-12 02:39:18, [3 - Moderate], Help, In Progress
+2020-02-28 05:25:59, [3 - Moderate], Software, 
+2020-02-16 02:09:58, [3 - Moderate], Help, On Hold
+2020-02-17 08:59:38, [3 - Moderate], Network, In Progress
+2020-01-01 19:38:11, [3 - Moderate], Software, Normal
+2020-01-21 04:29:03, [3 - Moderate], Hardware, 
+2020-01-17 00:17:19, [3 - Moderate], Smartphone, 
+2020-01-13 05:08:39, [3 - Moderate], Help, On Hold
+2020-02-28 11:44:42, [3 - Moderate], Software, In Progress
+2020-01-17 21:14:23, [3 - Moderate], Hardware, In Progress
+2020-01-20 12:56:56, [3 - Moderate], Network, On Hold
+2020-01-06 02:53:44, [3 - Moderate], Help, Normal
+2020-02-21 08:27:43, [4 - Low], Software, 
+2020-02-21 06:59:27, [4 - Low], Help, Normal
+2020-01-27 09:29:03, [4 - Low], Help, 
+2020-01-16 17:50:46, [4 - Low], Hardware, Normal
+2020-01-26 08:13:25, [4 - Low], Smartphone, Normal
+2020-01-15 21:09:19, [4 - Low], Network, In Progress
+2020-01-24 22:28:13, [4 - Low], Help, In Progress
+2020-01-25 06:38:51, [4 - Low], Help, Closed
+2020-01-21 09:31:49, [4 - Low], Help, Closed
+2020-01-02 00:01:42, [4 - Low], Help, 
+2020-02-04 17:50:21, [4 - Low], Software, In Progress
+2020-01-10 05:48:01, [4 - Low], Help, Normal
+2020-01-23 09:40:30, [4 - Low], Network, 
+2020-02-07 08:39:38, [4 - Low], Network, Normal
+2020-02-19 19:23:54, [4 - Low], Help, 
+2020-02-28 06:14:32, [4 - Low], Hardware, 
+2020-02-01 05:17:34, [4 - Low], Help, Closed
+2020-01-14 12:29:40, [4 - Low], Help, In Progress
+2020-01-01 04:45:35, [4 - Low], Help, Closed
+2020-02-04 03:52:10, [4 - Low], Help, In Progress
+2020-02-01 04:30:21, [4 - Low], Hardware, Normal
+2020-02-24 22:57:27, [4 - Low], Hardware, Normal
+2020-02-17 06:58:23, [4 - Low], Software, Normal
+2020-01-01 14:53:37, [4 - Low], Software, In Progress
+2020-01-04 16:45:54, [4 - Low], Help, Normal
+2020-01-19 07:30:50, [4 - Low], Hardware, In Progress
+2020-01-17 13:31:50, [4 - Low], Help, 
+2020-02-20 05:22:55, [5 - Planning], Help, In Progress
+2020-01-07 12:36:05, [5 - Planning], Software, Closed
+2020-01-14 03:04:23, [5 - Planning], Smartphone, Closed
+2020-02-17 20:32:01, [5 - Planning], Software, In Progress
+2020-02-20 03:04:31, [5 - Planning], Smartphone, In Progress
+2020-01-26 05:02:09, [5 - Planning], Software, Closed
+2020-01-09 15:30:12, [5 - Planning], Help, 
+2020-01-28 08:55:17, [5 - Planning], Hardware, 
+2020-02-04 11:32:02, [5 - Planning], Help, Normal
+2020-02-23 22:06:22, [5 - Planning], Help, In Progress
