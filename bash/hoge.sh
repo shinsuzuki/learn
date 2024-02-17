@@ -161,7 +161,7 @@ done < file.txt
 # read -r ans
 # echo "$ans"
 
-#____________________ コマンドの結果
+#____________________ コマンドの結果(forは使い所による)
 echo "____コマンドの結果"
 #for item in $(ls -1); do           << shellshock
 # for item in $(ls -1 ./*.txt); do
@@ -175,22 +175,17 @@ for file in *.txt; do
     fi
 done
 
-
-echo "__IFSを変更"
-echo "IFS:$IFS"
-# IFS保存
-BK_IFS=$IFS
-IFS=$'\n'
-
-for line in $(ps aux -1); do
-    echo "ps_line:$line"
+echo "__ファイル一覧2"
+find ./*.txt | while IFS= read -r line; do
+    echo "item:$line"
 done
 
-# IFSを元に戻す
-IFS=$BK_IFS
-# for line in $(ps aux -1); do
-#     echo "ps_line:$line"
-# done
+echo "__コマンド結果一覧"
+ps aux | while read -r line; do
+    echo "item:$line"
+done
 
+echo "__コマンド結果一覧(awk, sort)"
+ps aux  | awk '{ print $3, $4, $5, $11 }' | sort -k 3 -nr
 
 
