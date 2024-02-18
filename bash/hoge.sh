@@ -249,7 +249,7 @@ echo "a,b,c,d,e,f,g" | cut -d ',' -f 3-4
 echo "__grep(検索)"
 ps -aux | grep systemd
 
-echo "__sed(置換等)"
+echo "__sed(置換、削除、抽出など)"
 ps aux | sed s/systemd/SYSTEMD/g
 
 
@@ -258,8 +258,11 @@ ps aux | sed s/systemd/SYSTEMD/g
 echo "____設定ファイルから読込み"
 # shellcheck disable=SC1091
 source ./setting.config
-echo "MY_VALUE1:$MY_VALUE1"
-echo "MY_VALUE2:$MY_VALUE2"
+tput setaf 2 && echo "MY_VALUE1:$MY_VALUE1"
+tput setaf 2 && echo "MY_VALUE2:$MY_VALUE2"
+tput setaf 7
+
+
 
 echo ""
 echo "__end bash__"
