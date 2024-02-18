@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "start bash"
+echo "__start bash__"
+echo ""
 
 #
 # Ubuntu 22.04.2 LTS
@@ -33,6 +34,7 @@ echo "length:${#name}"         # 12
 echo "upper:${name^^}"        # JOHN_ABCDEFG
 echo "lower:${name,,}"        # john_abcdefg
 
+
 #____________________ デフォルト引数
 foo=""
 echo "default:${foo:=default-val}"
@@ -41,6 +43,7 @@ echo "default:${foo:=default-val}"
 echo "____コマンド実行"
 pwd
 echo "dir:$(pwd)"
+
 
 #____________________ 関数
 echo "____関数"
@@ -62,6 +65,7 @@ function get_value () {
 # returnで返された値は $? で取得する
 get_value
 echo "ret:$?"
+
 
 #____________________ パス
 echo "____パス"
@@ -113,10 +117,35 @@ if [[ -e file.txt ]]; then
     echo "exists > file.txt."
 fi
 
+#________ case
+echo "__case"
+cv="v2"
+case "$cv" in
+    "v1") echo case_v1
+    ;;
+    "v2"|"v3") echo case v2 or v3
+    ;;
+    *) echo default
+    ;;
+esac
+
+
 #____________________ 配列
 echo "____配列"
 fruits=('apple' 'banan' 'orange')   # 丸かっこで定義、
 echo "fruits-2:${fruits[2]}"    # orange、参照は波括弧
+
+
+echo "__宣言"
+declare -a item_array=()
+item_array+=("abc")
+item_array+=("def")
+echo "item:${item_array[0]}"
+echo "item:${item_array[1]}"
+
+for item in "${item_array[@]}"; do
+    echo "for-item:$item"
+done
 
 
 #____________________ 辞書
@@ -138,6 +167,7 @@ echo "__辞書_value"
 for value in "${dic[@]}"; do
     echo "value:$value"
 done
+
 
 #____________________ ファイル読込
 echo "____ファイル読込"
@@ -161,12 +191,14 @@ done < file.txt
 # read -r ans
 # echo "$ans"
 
+
 #____________________ コマンドの結果(forは使い所による)
 echo "____コマンドの結果"
 #for item in $(ls -1); do           << shellshock
 # for item in $(ls -1 ./*.txt); do
 #     echo "item:$item"
 # done;
+
 
 echo "__ファイル一覧"
 for file in *.txt; do
@@ -175,17 +207,59 @@ for file in *.txt; do
     fi
 done
 
-echo "__ファイル一覧2"
+echo "__ファイル一覧2(IFSの半角スペース・タブ・改行を無視し、オリジナルの内容を取得する)"
 find ./*.txt | while IFS= read -r line; do
     echo "item:$line"
 done
 
 echo "__コマンド結果一覧"
-ps aux | while read -r line; do
+ps aux | head -3 | while read -r line; do
     echo "item:$line"
 done
 
 echo "__コマンド結果一覧(awk, sort)"
-ps aux  | awk '{ print $3, $4, $5, $11 }' | sort -k 3 -nr
+ps aux | awk '{ print $3, $4, $5, $11 }' | sort -k 3 -nr | head -3
+
+echo "__コマンド結果一覧(配列に追加、参照、ファイルに出力)"
+declare -a ps_array=()
+while IFS= read -r line; do
+    ps_array+=("$line")
+done < <(ps aux | grep /lib/systemd)
+
+outpufile="output_psaux.txt"
+rm $outpufile
+for item in "${ps_array[@]}"; do
+    echo "item:$item"
+    echo "$item" >> $outpufile
+done
+
+echo "__コマンドの出力結果を文字列で出力"
+echo "dir:$(pwd)"
 
 
+#____________________ 他コマンドとの連携
+echo "____他コマンドとの連携"
+
+echo "__awk(抽出)"
+ls -al | awk '{ print $9, $5 | "sort -k2,2 -n -r" }'
+
+echo "__cut(抽出)"
+echo "a,b,c,d,e,f,g" | cut -d ',' -f 3-4
+
+echo "__grep(検索)"
+ps -aux | grep systemd
+
+echo "__sed(置換等)"
+ps aux | sed s/systemd/SYSTEMD/g
+
+
+
+#____________________ 設定ファイルから読込み
+echo "____設定ファイルから読込み"
+# shellcheck disable=SC1091
+source ./setting.config
+echo "MY_VALUE1:$MY_VALUE1"
+echo "MY_VALUE2:$MY_VALUE2"
+
+echo ""
+echo "__end bash__"
