@@ -4,7 +4,7 @@ echo start hoge.bat
 
 setlocal
 
-rem __________ƒpƒ‰ƒ[ƒ^
+rem __________ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 echo commandName: %0
 echo param_1: %1
 echo param_2: %2
@@ -26,12 +26,12 @@ echo label_b1
 
 
 rem __________call
-rem ŒÄ‚Ño‚µŒã‚É–ß‚è‚Ü‚·
+rem å‘¼ã³å‡ºã—å¾Œã«æˆ»ã‚Šã¾ã™
 call sub_fufu.bat
 call sub_koko.bat
 
 
-rem __________sub routine ¦g‚í‚È‚¢‚È
+rem __________sub routine â€»ä½¿ã‚ãªã„ãª
 @REM call :funcA "abc" "def"
 @REM exit /B 0
 
@@ -40,30 +40,30 @@ rem __________sub routine ¦g‚í‚È‚¢‚È
 @REM     exit /B 0
 
 
-rem __________start ¦g‚í‚È‚¢‚©‚È
-@rem •ÊƒvƒƒZƒX‚ÅÀs‚³‚¹‚Ä‚Ü‚·
+rem __________start â€»ä½¿ã‚ãªã„ã‹ãª
+@rem åˆ¥ãƒ—ãƒ­ã‚»ã‚¹ã§å®Ÿè¡Œã•ã›ã¦ã¾ã™
 @REM start sub_fufu.bat
 
-@REM rem “¯‚¶ƒEƒBƒ“ƒhƒE“à‚ÅƒRƒ}ƒ“ƒh‚ğÀs
+@REM rem åŒã˜ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…ã§ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œ
 @REM rem start /B sub_fufu.bat
 
-@REM rem •Ê‚ÌƒEƒBƒ“ƒhƒE‚ğŠJ‚«ƒRƒ}ƒ“ƒh‚ğÀsAI—¹‚ğ‘Ò‚Â
+@REM rem åˆ¥ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ãã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã€çµ‚äº†ã‚’å¾…ã¤
 @REM rem start /WAIT sub_fufu.bat
 
-@REM rem ƒEƒBƒ“ƒhƒE‚ğÅ¬‰»‚µÀs
+@REM rem ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æœ€å°åŒ–ã—å®Ÿè¡Œ
 @REM start /MIN sub_fufu.bat
 
 
-rem •ÊƒvƒƒZƒX‚ÅÀsAI—¹‚ğ‚Ü‚½‚¸‚ÉŸ‚Ìˆ—‚Ö
+rem åˆ¥ãƒ—ãƒ­ã‚»ã‚¹ã§å®Ÿè¡Œã€çµ‚äº†ã‚’ã¾ãŸãšã«æ¬¡ã®å‡¦ç†ã¸
 rem start sub_otherprocess_nana.bat
 
-rem •ÊƒvƒƒZƒX‚ÅÀsAI—¹‚ğ‘Ò‚Â
+rem åˆ¥ãƒ—ãƒ­ã‚»ã‚¹ã§å®Ÿè¡Œã€çµ‚äº†ã‚’å¾…ã¤
 start /wait sub_otherprocess_nana.bat
 
 
-rem __________Œ‹˜_
-rem ƒRƒ}ƒ“ƒh‚ÌŒ‹‰Ê‘€ì‚Íƒoƒbƒ`‚Å‚Ís‚í‚¸Powershell‚Å‘Î‰‚·‚é‚½‚ßA‚ ‚Ü‚èg‚¤‚±‚Æ‚ë‚Í‚È‚¢‚Æv‚¢‚Ü‚·B
-rem •K—v‚È‚ç’²¸‚µ‘Î‰‚µ‚Ü‚·B
+rem __________çµè«–
+rem ã‚³ãƒãƒ³ãƒ‰ã®çµæœæ“ä½œã¯ãƒãƒƒãƒã§ã¯è¡Œã‚ãšPowershellã§å¯¾å¿œã™ã‚‹ãŸã‚ã€ã‚ã¾ã‚Šä½¿ã†ã“ã¨ã‚ã¯ãªã„ã¨æ€ã„ã¾ã™ã€‚
+rem å¿…è¦ãªã‚‰èª¿æŸ»ã—å¯¾å¿œã—ã¾ã™ã€‚
 
 
 echo end hoge.bat
