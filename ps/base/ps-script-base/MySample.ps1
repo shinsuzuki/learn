@@ -7,10 +7,8 @@ $ErrorActionPreference = "Stop"
 #----------------------------------------
 # ログ出力
 #----------------------------------------
-# 自分の関数に引数にわたすときはスペース区切りで行う
-function Outputlog() {
-    param($msg)
-
+# 関数を実行する時に引数にわたす場合、スペース区切りで行う
+function Outputlog($msg) {
     $now = Get-Date -Format "yyyy/MM/dd HH:mm:ss"
     $outputMessage = "$($now) - $msg"
     Write-Host $outputMessage
