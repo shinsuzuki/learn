@@ -1,50 +1,51 @@
 #----------------------------------------
 # MySample.ps1
 #----------------------------------------
-Set-StrictMode -Version Latest;
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 #----------------------------------------
 # ログ出力
 #----------------------------------------
+# 自分の関数に引数にわたすときはスペース区切りで行う
 function Outputlog() {
     param($msg)
 
-    $now = Get-Date -Format "yyyy/MM/dd HH:mm:ss";
-    $outputMessage = "$($now) - $msg";
-    Write-Host $outputMessage;
-    $sw.WriteLine($outputMessage);
+    $now = Get-Date -Format "yyyy/MM/dd HH:mm:ss"
+    $outputMessage = "$($now) - $msg"
+    Write-Host $outputMessage
+    $sw.WriteLine($outputMessage)
 }
 
 #----------------------------------------
 # script before
 #----------------------------------------
 if (-not (Test-Path "./Log")) {
-    New-Item Log -ItemType Directory | Out-Null;
+    New-Item Log -ItemType Directory | Out-Null
 }
 
-$scriptName = [System.IO.Path]::GetFileNameWithoutExtension($MyInvocation.MyCommand.name);
-$now = Get-Date -Format "yyyyMMddHHmmss";
-$logFile = "./Log/$($scriptName)_$now.log";
-$script:sw = New-Object System.IO.StreamWriter($logFile, $true, [System.Text.Encoding]::GetEncoding("utf-8"));
+$scriptName = [System.IO.Path]::GetFileNameWithoutExtension($MyInvocation.MyCommand.name)
+$now = Get-Date -Format "yyyyMMddHHmmss"
+$logFile = "./Log/$($scriptName)_$now.log"
+$script:sw = New-Object System.IO.StreamWriter($logFile, $true, [System.Text.Encoding]::GetEncoding("utf-8"))
 
-$config = Get-Content "config.json" -Raw | ConvertFrom-Json;
-# Outputlog("dbServer=$($config.dbServer)")
-# Outputlog("database=$($config.database)")
-# Outputlog("user=$($config.user)")
-# Outputlog("password=$($config.password)")
-# Outputlog("timeout=$($config.timeout)")
-# Outputlog("url=$($config.url)")
+$config = Get-Content "config.json" -Raw | ConvertFrom-Json
+# Outputlog "dbServer=$($config.dbServer)"
+# Outputlog "database=$($config.database)"
+# Outputlog "user=$($config.user)"
+# Outputlog "password=$($config.password)"
+# Outputlog "timeout=$($config.timeout)"
+# Outputlog "url=$($config.url)"
 
 #----------------------------------------
 # script main
 #----------------------------------------
 try {
-    OutputLog("start $($scriptName)");
-    $watch = New-Object System.Diagnostics.Stopwatch;
-    $watch.Start();
+    OutputLog "start $($scriptName)"
+    $watch = New-Object System.Diagnostics.Stopwatch
+    $watch.Start()
 
-    OutputLog("job...");
+    OutputLog "job..."
 
     #----------
     # db
@@ -82,8 +83,8 @@ try {
     # try {
     #     $url = $config.url;
     #     $response = Invoke-WebRequest -Method Get -Uri $url;
-    #     Outputlog("StatusCode:$($response.StatusCode)");
-    #     Outputlog("StatusDescription:$($response.StatusDescription)");
+    #     Outputlog "StatusCode:$($response.StatusCode)"
+    #     Outputlog "StatusDescription:$($response.StatusDescription)"
     # }
     # catch [System.Net.WebException] {
     #     $exceptionResponse = $_.Exception.Response;
@@ -99,22 +100,22 @@ try {
     #     $errorResponse = $reader.ReadToEnd();
     #     $stream.close();
     #     $reader.close();
-    #     Outputlog("StatusCode:$($exceptionResponse.StatusCode.value__)");
-    #     Outputlog("StatusCode:$($exceptionResponse.StatusCode)");
-    #     Outputlog("ErrorResponse:$($errorResponse)");
+    #     Outputlog "StatusCode:$($exceptionResponse.StatusCode.value__)"
+    #     Outputlog "StatusCode:$($exceptionResponse.StatusCode)"
+    #     Outputlog "ErrorResponse:$($errorResponse)"
     # }
 
     #----------------------------------------
     # script after
     #----------------------------------------
-    $watch.Stop();
-    $t = $watch.Elapsed;
-    OutputLog("processing time[" + ($t.totalSeconds.toString("0.00")) + " sec]");
-    OutputLog("end $($scriptName)");
-    $sw.Close();
-    exit 0;
+    $watch.Stop()
+    $t = $watch.Elapsed
+    OutputLog "processing time[" + ($t.totalSeconds.toString("0.00")) + " sec]"
+    OutputLog "end $($scriptName)"
+    $sw.Close()
+    exit 0
 }
 catch {
-    $sw.Close();
-    exit 1;
+    $sw.Close()
+    exit 1
 }
