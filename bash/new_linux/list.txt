@@ -1,0 +1,5 @@
+.rwxrwxrwx 125 ssin 14 Dec 15:25 color-test.sh*
+.rwxrwxrwx  47 ssin 14 Dec 15:23 color.txt*
+.rwxrwxrwx   0 ssin 14 Dec 21:12 list.txt*
+.rwxrwxrwx   0 ssin 14 Dec 20:54 log.txt*
+.rwxrwxrwx  48 ssin 14 Dec 20:58 result.txt*
