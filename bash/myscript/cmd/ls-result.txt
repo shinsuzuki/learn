@@ -1,0 +1,2 @@
+drwxrwxrwx - ssin 22 12月 23:27 cmd
+.rwxrwxrwx 0 ssin 22 12月 23:33 ls-result.txt

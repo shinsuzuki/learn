@@ -1,0 +1,6 @@
+.rwxrwxrwx   0 ssin 22 12月 23:53 file001.txt
+.rwxrwxrwx   0 ssin 22 12月 23:59 file002.txt
+.rwxrwxrwx  84 ssin 22 12月 23:33 ls-result.txt
+.rwxrwxrwx 177 ssin 25 12月 00:30 random-list.txt
+drwxrwxrwx   - ssin 23 12月 00:42 tmp
+drwxrwxrwx   - ssin 23 12月 00:59 wget-data

@@ -1,0 +1,37 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0 165804 11332 ?        Ss   15:09   0:00 /sbin/init
+root           2  0.0  0.0   2616  1440 ?        Sl   15:09   0:00 /init
+root           6  0.0  0.0   2628   140 ?        Sl   15:09   0:00 plan9 --control-socket 6 --log-level 4 --server-fd 7 --pipe-fd 9 --log-truncate
+root          59  0.0  0.1  80612 18464 ?        S<s  15:09   0:00 /lib/systemd/systemd-journald
+root          82  0.0  0.0  22096  5968 ?        Ss   15:09   0:00 /lib/systemd/systemd-udevd
+root          93  0.0  0.0 152992  2228 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/bare_5.snap /snap/bare/5 -o ro,nodev,allow_other,suid
+root          96  0.0  0.0 152992  2224 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/core22_1663.snap /snap/core22/1663 -o ro,nodev,allow_other,suid
+root          98  0.0  0.0 452048 15776 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/core22_1722.snap /snap/core22/1722 -o ro,nodev,allow_other,suid
+root         106  0.0  0.0 153124  2252 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/gtk-common-themes_1535.snap /snap/gtk-common-themes/1535 -o ro,nodev,allow_other,suid
+root         113  0.0  0.0 152992  2236 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/snapd_20671.snap /snap/snapd/20671 -o ro,nodev,allow_other,suid
+root         120  0.0  0.0 302652  8888 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/snapd_23258.snap /snap/snapd/23258 -o ro,nodev,allow_other,suid
+root         124  0.0  0.0 152992  2236 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/ubuntu-desktop-installer_1284.snap /snap/ubuntu-desktop-installer/1284 -o ro,nodev,allow_other,suid
+root         128  0.0  0.0 302520 11332 ?        Ssl  15:09   0:00 snapfuse /var/lib/snapd/snaps/ubuntu-desktop-installer_1286.snap /snap/ubuntu-desktop-installer/1286 -o ro,nodev,allow_other,suid
+systemd+     177  0.0  0.0  25664 12820 ?        Ss   15:09   0:00 /lib/systemd/systemd-resolved
+systemd+     178  0.0  0.0  89364  6620 ?        Ssl  15:09   0:00 /lib/systemd/systemd-timesyncd
+root         219  0.0  0.0   5068  2912 ?        Ss   15:09   0:00 /usr/sbin/cron -f -P
+message+     221  0.0  0.0   8588  4620 ?        Ss   15:09   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         226  0.0  0.1  30944 19460 ?        Ss   15:09   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+syslog       227  0.0  0.0 222404  7144 ?        Ssl  15:09   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         229  0.0  0.2 2060120 45716 ?       Ssl  15:09   0:01 /usr/lib/snapd/snapd
+root         230  0.0  0.0  15332  7428 ?        Ss   15:09   0:00 /lib/systemd/systemd-logind
+root         237  0.0  0.0   5544  3528 ?        Ss   15:09   0:00 /bin/bash /snap/ubuntu-desktop-installer/1286/bin/subiquity-server
+root         264  0.0  0.0   3972  1072 hvc0     Ss+  15:09   0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud console 115200,38400,9600 vt220
+root         266  0.0  0.0   4348  1072 tty1     Ss+  15:09   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         274  0.0  0.1 107960 21472 ?        Ssl  15:09   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         307  0.0  0.6 1976424 101340 ?      Sl   15:09   0:02 /snap/ubuntu-desktop-installer/1286/usr/bin/python3.10 -m subiquity.cmd.server --use-os-prober --storage-version=2 --postinst-hooks-dir=/snap/ubuntu-desktop-installer/1286/etc/subiquity/postinst.d
+root         370  0.0  0.0   2624   120 ?        Ss   15:09   0:00 /init
+root         371  0.0  0.0   2624   128 ?        S    15:09   0:00 /init
+ssin         372  0.0  0.0   7480  6060 pts/0    Ss   15:09   0:00 -bash
+root         373  0.0  0.0   7524  4944 pts/1    Ss   15:09   0:00 /bin/login -f
+ssin         425  0.0  0.0  16912  8692 ?        Ss   15:09   0:00 /lib/systemd/systemd --user
+ssin         426  0.0  0.0 168856  3472 ?        S    15:09   0:00 (sd-pam)
+ssin         431  0.0  0.0   6992  5252 pts/1    S+   15:09   0:00 -bash
+root        1148  0.0  0.1 293900 20552 ?        Ssl  15:33   0:00 /usr/libexec/packagekitd
+root        1152  0.0  0.0 234512  6600 ?        Ssl  15:33   0:00 /usr/libexec/polkitd --no-debug
+ssin        1978  0.0  0.0   8512  3680 pts/0    R+   17:58   0:00 ps -aux
