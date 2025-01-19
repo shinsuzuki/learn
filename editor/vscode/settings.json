@@ -1,0 +1,169 @@
+{
+  "editor.fontFamily": "PlemolJP,HackGen35,'Myrica M',MeiryoKe_Console,Consolas, 'Courier New', monospace",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.tabSize": 4,
+  "editor.mouseWheelZoom": true,
+  "editor.formatOnPaste": false,
+  "terminal.integrated.cursorBlinking": true,
+  "editor.renderControlCharacters": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "none",
+
+  "[vb]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[scss]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[vue]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true
+  },
+  "[shellscript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[typescript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "[sql]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+
+  "workbench.editor.enablePreview": false,
+  "workbench.colorTheme": "Electron",
+  "files.trimTrailingWhitespace": true,
+  "workbench.startupEditor": "none",
+  "notebook.output.textLineLimit": 200,
+  "vscode-edge-devtools.mirrorEdits": true,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "files.associations": {
+    "*.css": "css",
+    "*.dcm": "vb"
+  },
+  "editor.formatOnType": false,
+  "prettier.insertPragma": false,
+  "editor.snippetSuggestions": "top",
+  "editor.formatOnSave": false,
+  "editor.minimap.enabled": false,
+  "blockman.n01LineHeight": 0,
+  "workbench.colorCustomizations": {
+    "window.activeBorder": "#0080ff",
+    "window.inactiveBorder": "#80ff00",
+    "editorStickyScroll.background": "#332765",
+    "editorStickyScrollHover.background": "#504083",
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f",
+    "editor.selectionBackground": "#1030b0",
+    "editor.selectionHighlightBackground": "#434343",
+    "editor.findMatchHighlightBackground": "#660",
+    "editor.findMatchBorder": "#ff6347",
+    "editor.findMatchBackground": "#660",
+    "tab.activeBackground": "#4040a0"
+  },
+  "editor.wordWrap": "off",
+  "diffEditor.wordWrap": "off",
+  "editor.guides.indentation": false,
+  "editor.guides.bracketPairs": false,
+  "editor.inlayHints.enabled": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line-thin",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrapColumn": 120,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "debug.console.fontFamily": "MeiryoKe_Console,Consolas, 'Courier New', monospace",
+  "npm.keybindingsChangedWarningShown": true,
+  "workbench.tree.indent": 24,
+  "editor.stickyScroll.enabled": true,
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.acceptSuggestionOnEnter": "off",
+  "prettier.semi": false,
+  "blockman.n04Sub04RightSideBaseOfBlocks": "Rightmost Edge Of Viewport",
+  "blockman.n04Sub06AdditionalPaddingRight": 8,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "prettier.printWidth": 120,
+  "mssql.resultsFontSize": 14,
+  "scm.inputFontSize": 14,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.encoding": "utf8bom",
+  "powershell.codeFormatting.useCorrectCasing": true,
+  "powershell.codeFormatting.whitespaceBetweenParameters": true,
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+  "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell"
+  },
+  "workbench.sideBar.location": "right",
+  "omnisharp.disableMSBuildDiagnosticWarning": true,
+  "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+  "dotnet.server.useOmnisharp": true,
+  "explorer.confirmDelete": false,
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "terminal.integrated.stickyScroll.enabled": true,
+  "gitlens.views.repositories.includeWorkingTree": true,
+  "gitlens.views.workspaces.includeWorkingTree": true,
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.rulers": [120],
+    "editor.semanticHighlighting.enabled": true
+  },
+  "redhat.telemetry.enabled": true,
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "markdown-preview-github-styles.darkTheme": "dark_colorblind",
+  "markdown-preview-enhanced.hideDefaultVSCodeMarkdownPreviewButtons": false,
+  "markdown-preview-enhanced.revealjsTheme": "solarized.css",
+  "powershell.promptToUpdatePowerShell": false,
+  "files.autoGuessEncoding": true,
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "terminal.integrated.fontSize": 15,
+  "editor.fontSize": 18,
+  "explorer.confirmDragAndDrop": false
+}
