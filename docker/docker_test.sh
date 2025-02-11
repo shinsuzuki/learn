@@ -97,8 +97,30 @@ $ docker image save ubuntu:22.04 --output save.tar
 $ docker image load save.tar
 
 
+# ボリュームを作成
+$ docker volume create --name my-volume
+
+# ボリュームをマウント
+$ docker container run \
+ --name ubuntu1 --rm \
+ --interactive --tty \
+ --mount type=volume,source=my-volume,destination=/my-work \
+ ubuntu:22.04
+
+# ボリュームを削除
+$ docker volume rm my-volume
 
 
+# バインドマウント(ホストマシンのディレクトリをマウント)
+$ docker container run \
+ --name ruby \
+ --rm --interactive --tty \
+ --mount type=bind,source="$(pwd)",destination=/my-work ruby:3.2.2 bash
 
+
+# ネットワークの作成
+$ docker network create my-network
+# ネットワーク一覧
+$ docker network ls
 
 
