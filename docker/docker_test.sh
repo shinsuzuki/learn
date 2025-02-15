@@ -63,7 +63,10 @@ $ docker container run --name db --detach --env POSTGRES_PASSWORD=secret --publi
 $ docker container exec --interactive --tty db bash
 
 # 起動中のコンテナにroot以外でログイン
+# ※初期パスワードが設定されていないため、rootでログイン後にrootのパスワードを'passwd'で設定する
+# $docker exec -it [コンテナ名] --user root bash
 $ docker exec -it [コンテナ名] --user [ユーザー名または UID] bash
+
 
 # イメージを取得
 $ docker image pull ubuntu:leatest
