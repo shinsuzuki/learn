@@ -62,6 +62,9 @@ $ docker container run --name db --detach --env POSTGRES_PASSWORD=secret --publi
 # 起動中のコンテナでbashを実行
 $ docker container exec --interactive --tty db bash
 
+# 起動中のコンテナにroot以外でログイン
+$ docker exec -it [コンテナ名] --user [ユーザー名または UID] bash
+
 # イメージを取得
 $ docker image pull ubuntu:leatest
 $ docker image pull ubuntu:23.10
@@ -77,6 +80,9 @@ $ docker container run \
  --env MYSQL_ROOT_PASSWORD=secret \
  --publish 3306:3306
  mysql:8.0.35
+
+# イメージに名前を付ける
+$ docker build -t aspnetapp_image .
 
  # コンテナにviをインストールする
  $ docker container run --name myubuntu --interactive --tty ubuntu:22.04 bash
