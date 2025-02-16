@@ -1,0 +1,36 @@
+#----------------------------------------
+# nginx-memo(linux)
+#----------------------------------------
+
+# イメージを取得（debian）
+$ docker pull nginx
+
+# nginxを起動
+$ docker container run --name nginx1 --publish 9000:80 nginx
+
+
+# 別ターミナルから接続して試す
+$ docker container exec --interactive --tty nginx1 bash
+
+# バージョン
+:/# nginx -v
+
+# 状態をチェック
+:/# service nginx status
+
+# nginxを停止
+:/# service nginx stop
+
+# nginx 設定ファイルを読み込み
+:/# service nginsx reload
+
+# nginx を再起動
+:/# service nginsx restart
+
+# psコマンドがないので、下記でインストール
+> apt update
+> apt install -y procps
+
+# アクセスログ
+/var/log/nginx/access.log
+/var/log/nginx/error.log

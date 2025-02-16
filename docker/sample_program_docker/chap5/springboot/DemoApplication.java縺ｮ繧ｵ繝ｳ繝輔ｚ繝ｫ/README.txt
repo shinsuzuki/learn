@@ -1,0 +1,2 @@
+Spring Initializerよりダウンロードしたファイルのうち、
+本書の説明にしたがってDemoApplication.javaを書きかえる際の参考として、利用してください。

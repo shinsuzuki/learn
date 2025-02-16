@@ -1,0 +1,9 @@
+services:
+  web:
+    image: openjdk:18
+    command : ./mvnw spring-boot:run
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./demo:/demo
+    working_dir: /demo

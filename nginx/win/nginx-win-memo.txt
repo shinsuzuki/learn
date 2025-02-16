@@ -1,0 +1,25 @@
+﻿#----------------------------------------
+# Windowsのnginx
+#----------------------------------------
+
+#____________________ version
+> git -v
+> nginx version: nginx/1.27.4
+
+#____________________ 起動
+> start nginx
+
+#____________________ 停止（今の作業が終了後に停止）
+> nginx -s quit
+#↑Windowsだとプロセスが残るため、↓で停止する
+# https://stackoverflow.com/questions/59613201/how-to-stop-nginx-for-windows
+> wmic process where name='nginx.exe' delete
+
+#____________________ 停止（即時停止）
+> nginx -s stop
+
+#____________________ 再起動
+> nginx -s reload
+
+
+

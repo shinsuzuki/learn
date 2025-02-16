@@ -133,3 +133,23 @@ $ docker network create my-network
 $ docker network ls
 
 
+
+
+#### docker compose(compose.yamlのある場所で実行)
+
+# コンテナの作成と起動
+$ docker compose up --detach --build
+
+# コンテナの停止と削除
+$ docker compose down
+
+# コンテナの停止と削除(イメージとボリュームを削除)
+$ docker compose down --rmi all --volumes
+
+# コンテナ一覧の確認(compose.yamlのある場所でサービス名を確認できる)
+$ docker compose ps
+
+# 起動中のコンテナでコマンドを実行(コンテナ名ではなくサービス名)
+$ docker compose exec <service-name> bash
+
+

@@ -1,0 +1,55 @@
+﻿services:
+  app:
+    container_name: my-work-app
+    build: ./docker/app
+    ports:
+      - "8000:8000"
+    networks:
+      - network-01
+    volumes:
+      - type: bind
+        source: ./src
+        target: /my-work
+
+  db:
+    container_name: my-work-db
+    image: mysql:8.2.0
+    ports:
+      - "3306:3306"
+    networks:
+      - network-01
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=pass1234
+      - MYSQL_DATABASE=sample
+      - TZ=Asia/Tokyo
+    volumes:
+      - type: volume
+        source: db-compose-volume
+        target: /var/lib/mysql
+      - type: bind
+        source: ./docker/db/init
+        target: /docker-entrypoint-initdb.d
+
+  mail:
+    container_name: my-work-mail
+    image: axllent/mailpit:v1.10.1
+    ports:
+      - "8025:8025"
+    networks:
+      - network-01
+    environment:
+      - TZ=Asia/Tokyo
+      - MP_DATA_FILE=/data/mailpit.db
+    volumes:
+      - type: volume
+        source: mail-compose-volume
+        target: /data
+
+networks:
+  network-01:
+
+volumes:
+  db-compose-volume:
+  mail-compose-volume:

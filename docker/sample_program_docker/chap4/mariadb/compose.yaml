@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mariadb:10.7
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: testuser
+      MARIADB_PASSWORD: testpass
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:

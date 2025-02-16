@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mariadb:10.7
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: testuser
+      MARIADB_PASSWORD: testpass
+    volumes:
+      - db-data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: testuser
+      PMA_PASSWORD: testpass
+    ports:
+      - "8080:80"
+    volumes:
+    - phpmyadmin-data:/sessions
+volumes:
+  db-data:
+  phpmyadmin-data:
