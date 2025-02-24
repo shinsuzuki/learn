@@ -1,0 +1,22 @@
+total 64
+drwxr-xr-x    1 root     root          4096 Feb 24 06:46 .
+drwxr-xr-x    1 root     root          4096 Feb 24 06:46 ..
+-rwxr-xr-x    1 root     root             0 Feb 24 06:46 .dockerenv
+drwxr-xr-x    1 root     root          4096 Feb 14 19:11 bin
+drwxr-xr-x    5 root     root           360 Feb 24 06:46 dev
+drwxr-xr-x    1 root     root          4096 Feb 24 06:46 etc
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 home
+drwxr-xr-x    1 root     root          4096 Feb 13 23:04 lib
+drwxr-xr-x    5 root     root          4096 Feb 13 23:04 media
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 mnt
+drwxrwxrwx    1 root     root          4096 Feb 24 06:46 my-work
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 opt
+dr-xr-xr-x  291 root     root             0 Feb 24 06:46 proc
+drwx------    2 root     root          4096 Feb 13 23:04 root
+drwxr-xr-x    3 root     root          4096 Feb 13 23:04 run
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 sbin
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 srv
+dr-xr-xr-x   11 root     root             0 Feb 24 03:20 sys
+drwxrwxrwt    2 root     root          4096 Feb 13 23:04 tmp
+drwxr-xr-x    1 root     root          4096 Feb 14 19:11 usr
+drwxr-xr-x   11 root     root          4096 Feb 13 23:04 var
