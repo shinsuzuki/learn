@@ -277,14 +277,109 @@ ps> docoker network ls
 
 ### コンテナからホストへコピー
 ```ps1
-#ps> docker cp <container-id>:<src-dir,file> <output-dir,file>
+#ps> docker cp <container-id>:<src-dir,file> <dist-dir,file>
 ps > docker cp bash1:/etc/profile . 
 Successfully copied 2.56kB to C:\Users\shins\mydev\learn\docker\sandbox\hoge\.
 ```
 
 ### ホストからコンテナへコピー
 ```ps1
-# ps> docker cp <src-dir,file> <container-id>:<output-dir,file> 
+# ps> docker cp <src-dir,file> <container-id>:<dist-dir,file> 
 ps> docker cp ./sample.txt bash1:/etc/sample.txt
 Successfully copied 2.05kB to bash1:/etc/sample.txt
 ```
+
+
+## docker-compose
+
+Docker Composeコマンドはcompose.yamlを配置した階層で実行します。
+
+### コンテナの作成と実行
+
+```ps1
+# コンテナの作成と実行
+ps> docker compose up -d
+```
+
+### コンテナの停止
+
+```ps1
+# コンテナの停止
+ps> docker compose stop
+```
+
+### 作成済みのコンテナを実行
+
+```ps1
+# 作成済みのコンテナを実行
+ps> docker compose start
+```
+
+### コンテナを削除
+
+#### rm（停止状態を削除、紐づくネットワークは削除しない）
+```ps1
+# コンテナを削除(停止状態を削除、紐づくネットワークは削除しない)
+ps> docker compose rm
+```
+
+#### rm -s（停止と削除）
+```ps1
+# コンテナを削除(停止と削除)
+ps> docker compose rm -s
+```
+
+#### down（コンテナとネットワークを削除）
+```ps1
+# コンテナを削除(コンテナとネットワークを削除)
+ps> docker compose down
+```
+
+#### down（コンテナとネットワーク、イメージを削除）
+```ps1
+# コンテナを削除(コンテナとネットワークイメージを削除)
+ps> docker compose down --rmi all
+```
+
+
+note:  オプションでボリュームも併せて削除可能
+
+
+### プロジェクトの一覧
+```ps1
+# プロジェクトの一覧
+ps> docker compose ls 
+NAME                STATUS              CONFIG FILES
+001apache           running(1)          C:\Users\shins\mydev\learn\docker\sandbox\docker-compose\001.apache\compose.yaml
+```
+
+### コピー（コンテナとホスト間でファイルのコピー）
+
+#### コンテナからホストへコピー
+```ps1
+# コンテナからホストへコピー
+ps> docker compose cp <container-id>:<src-dir,file> <dist-dir,file>
+```
+
+#### ホストからコンテナへコピー
+```ps1
+# ホストからコンテナへコピー
+ps> docker compose cp <src-dir,file> <container-id>:<dist-dir,file> 
+```
+
+### コンテナ内でコマンド
+#### コンテナ内でコマンドを実行
+```ps1
+ps > docker compose exec db mariadb --version
+mariadb  Ver 15.1 Distrib 10.7.8-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
+```
+
+
+#### コンテナ内でシェルを立ち上げる
+```ps1
+ps > docker compose exec db bash
+root@ac4b567eb8f2:/#
+```
+
+
+
