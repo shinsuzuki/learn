@@ -1,0 +1,3 @@
+﻿http://example-a.com:8080       : page a
+https://example-b.com:8081      : page b
+http://example-c.com:8080       : page a

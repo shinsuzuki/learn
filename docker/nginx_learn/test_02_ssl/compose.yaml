@@ -1,0 +1,15 @@
+services:
+  nginx:
+    image: nginx:1.22
+    #image: ubuntu/nginx:latest
+    ports:
+      - "8080:80"
+      - "8081:443"
+    volumes:
+      # バインド先にDIRがない場合は作成される
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./html:/usr/share/nginx/html
+      - ./etc/nginx/ssl:/etc/nginx/ssl
+
+
+

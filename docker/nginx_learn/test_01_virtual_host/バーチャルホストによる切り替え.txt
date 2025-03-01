@@ -1,0 +1,3 @@
+﻿example-a.com:8080
+example-b.com:8080
+表示するページが変わる

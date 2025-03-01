@@ -1,0 +1,10 @@
+services:
+  nginx:
+    image: nginx:1.22
+    ports:
+      - "8080:80"
+    volumes:
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./html:/usr/share/nginx/html
+
+
