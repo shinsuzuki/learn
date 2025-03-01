@@ -1,0 +1,21 @@
+{
+  "args": {}, 
+  "data": "{\r\n  \"name\": \"sato\",\r\n  \"age\": 30\r\n}\r\n", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "application/json, */*;q=0.5", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "38", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "HTTPie/3.2.2", 
+    "X-Amzn-Trace-Id": "Root=1-65cb5189-52dc3dd84698c9f9379dc246"
+  }, 
+  "json": {
+    "age": 30, 
+    "name": "sato"
+  }, 
+  "origin": "60.126.96.149", 
+  "url": "https://httpbin.org/post"
+}

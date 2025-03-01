@@ -1,0 +1,21 @@
+{
+  "args": {}, 
+  "data": "{  \"name\": \"sato\",  \"age\": 30}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Length": "30", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "My-Add": "value1", 
+    "User-Agent": "curl/8.6.0", 
+    "X-Amzn-Trace-Id": "Root=1-65cbc2f9-745b70a522fd01d07069bcf2"
+  }, 
+  "json": {
+    "age": 30, 
+    "name": "sato"
+  }, 
+  "origin": "60.126.96.149", 
+  "url": "https://httpbin.org/post"
+}
