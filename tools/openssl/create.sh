@@ -10,11 +10,11 @@ cd "${uniqid}" || exit
 # create private key
 echo "__create private key"
 private_key="private_${uniqid}.key"
-openssl genrsa 2024 > "$private_key"
+openssl genrsa 2048 > "$private_key"
 
 # craete csr
 echo "__craete csr"
-server_csr="server_${uniqid}_.csr"
+server_csr="server_${uniqid}.csr"
 openssl req -new -key "$private_key" > "$server_csr"
 
 echo "__craete crt"
