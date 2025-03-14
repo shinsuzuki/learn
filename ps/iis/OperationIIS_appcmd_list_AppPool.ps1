@@ -7,3 +7,6 @@ $APPPOOL_NAME = "DefaultAppPool"
 
 #__________ アプリケーションプール一覧
 C:\Windows\System32\inetsrv\appcmd list apppools
+
+Write-Host ""
+C:\Windows\System32\inetsrv\appcmd list apppools $APPPOOL_NAME
