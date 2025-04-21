@@ -468,3 +468,61 @@ SQL> DROP SEQUENCE {sequence_name};
 -- 例）
 SQL> DROP SEQUENCE EMP_SEQ;
 ```
+
+### シーケンスの情報を表示（特定のスキーマのシーケンス）
+```sql
+SQL> SELECT SEQUENCE_NAME, MIN_VALUE, MAX_VALUE, INCREMENT_BY, CYCLE_FLAG FROM ALL_SEQUENCES WHERE SEQUENCE_OWNER = '{schema_name}';
+-- 例）
+SQL> SELECT SEQUENCE_NAME, MIN_VALUE, MAX_VALUE, INCREMENT_BY, CYCLE_FLAG FROM ALL_SEQUENCES WHERE SEQUENCE_OWNER = 'HR';
+```
+
+## 権限
+
+### システム権限の付与
+```sql
+SQL> GRANT {privilege} TO {username};
+-- 例）
+SQL> GRANT CREATE TABLE TO HR;
+```
+
+### システム権限の剥奪
+```sql
+SQL> REVOKE {privilege} FROM {username};
+-- 例）
+SQL> REVOKE CREATE TABLE FROM HR;
+```
+
+### オブジェクト権限の付与
+```sql
+SLQ> GRANT {privilege} ON {object} TO {username};
+-- 例）
+SQL> GRANT SELECT ON SCOT.EMP TO HR;
+```
+
+### オブジェクト権限の剥奪
+```sql
+SQL> REVOKE {privilege} ON {object} FROM {username};
+-- 例）
+SQL> REVOKE SELECT ON SCOT.EMP FROM HR;
+```
+
+### ロールへのシステム権限の付与
+```sql
+SQL> GRANT {privilege} TO {role};
+-- 例）
+SQL> GRANT CREATE TABLE TO HR_ROLE;
+```
+
+### ロールへのオブジェクト権限の付与
+```sql
+SQL> GRANT {role} TO {username};
+-- 例）
+SQL> GRANT DBA TO HR;
+```
+
+### ロールからオブジェクト権限の剥奪
+```sql
+SQL> REVOKE {role} FROM {username};
+-- 例）
+SQL> REVOKE DBA FROM HR;
+```
