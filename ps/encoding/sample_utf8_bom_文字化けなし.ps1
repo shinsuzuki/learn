@@ -1,0 +1,2 @@
+﻿Write-Host "HelloWorld こんにちは"
+

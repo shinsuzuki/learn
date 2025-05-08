@@ -1,0 +1,2 @@
+# PowerShellでps1ファイルに使う文字コードと改行コードについて
+https://qiita.com/SAITO_Keita/items/573e1b0274942947a9fe
