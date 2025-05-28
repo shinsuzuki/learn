@@ -317,6 +317,16 @@ SQL> SELECT {column1}, {column2} FROM {table_name1} INNER JOIN {table_name2} ON 
 SQL> SELECT {column1}, {column2} FROM {table_name1} CROSS JOIN {table_name2};
 ```
 
+### 存在チェック
+```sql
+SQL>select case
+    when exists (select 1 from emp where JOB = 'CLERK')
+        then 'true'
+        else 'false'
+    end as Result
+    from dual;
+```
+
 ## 6.トランザクション制御
 ### コミット
 ```sql
