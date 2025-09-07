@@ -187,6 +187,29 @@ SQL> TRUNCATE TABLE {table_name};
 SQL > TRUNCATE TABLE MEMBER;
 ```
 
+### カラムを追加
+```sql
+SQL> ALTER TABLE {table_name} ADD ({column_name} {data_type} [{constraint}]);
+-- 例）
+SQL> ALTER TABLE MEMBER ADD (AGE NUMBER(3), DEFAULT 0);
+```
+
+### カラム定義を変更
+```sql
+SQL> ALTER TABLE {table_name} MODIFY ({column_name} {data_type} [{constraint}]);
+-- 例）
+SQL> ALTER TABLE MEMBER MODIFY (AGE NUMBER(5));
+```
+
+### カラムを削除
+```sql
+SQL> ALTER TABLE {table_name} DROP COLUMN {column_name};
+-- 例）
+SQL> ALTER TABLE MEMBER DROP COLUMN AGE;
+```
+
+
+
 ## 4.複雑な条件検索
 ### 列の表示を変える
 ```sql
@@ -436,28 +459,6 @@ SQL> ALTER TABLE MEMBER ADD CONSTRAINT CK_MEMBER CHECK (SALARY > 0);
 SQL> ALTER TABLE {table_name} DROP CONSTRAINT {constraint_name};
 -- 例）
 SQL> ALTER TABLE MEMBER DROP CONSTRAINT PK_MEMBER;
-```
-## カラム追加・削除・変更
-
-### カラムを追加
-```sql
-SQL> ALTER TABLE {table_name} ADD ({column_name} {data_type} [{constraint}]);
--- 例）
-SQL> ALTER TABLE MEMBER ADD (AGE NUMBER(3), DEFAULT 0);
-```
-
-### カラム定義を変更
-```sql
-SQL> ALTER TABLE {table_name} MODIFY ({column_name} {data_type} [{constraint}]);
--- 例）
-SQL> ALTER TABLE MEMBER MODIFY (AGE NUMBER(5));
-```
-
-### カラムを削除
-```sql
-SQL> ALTER TABLE {table_name} DROP COLUMN {column_name};
--- 例）
-SQL> ALTER TABLE MEMBER DROP COLUMN AGE;
 ```
 
 ## 10.シーケンスの使用
