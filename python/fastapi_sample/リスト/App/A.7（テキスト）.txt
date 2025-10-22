@@ -1,0 +1,34 @@
+# 新規登録
+async def insert_memo(
+        db_session: AsyncSession,
+        memo_data: memo_schema.InsertAndUpdateMemoSchema) -> memo_model.Memo:
+    ・・・ 既存コード ・・・
+    # 修正：Memoモデルのインスタンスを作成
+    new_memo = memo_model.Memo(
+        title=memo_data.title,
+        description=memo_data.description,
+        # メモのステータス情報を取得 (status 経由でアクセス)
+        priority=memo_data.status.priority,             # 優先度
+        due_date=memo_data.status.due_date,             # 期限
+        is_completed=memo_data.status.is_completed      # 完了フラグ
+    )
+    db_session.add(new_memo)
+    ・・・ 既存コード ・・・
+
+# 更新処理
+async def update_memo(
+        db_session: AsyncSession,
+        memo_id: int,
+        target_data: memo_schema.InsertAndUpdateMemoSchema) -> memo_model.Memo | None:
+    ・・・ 既存コード ・・・
+    memo = await get_memo_by_id(db_session, memo_id)
+    if memo:
+        memo.title = target_data.title
+        memo.description = target_data.description
+        memo.updated_at = datetime.now()
+        # メモのステータス情報を更新 (status 経由でアクセス)
+        memo.priority = target_data.status.priority             # 優先度を更新
+        memo.due_date = target_data.status.due_date             # 期限日を更新
+        memo.is_completed = target_data.status.is_completed     # 完了フラグを更新
+        await db_session.commit()
+    ・・・ 既存コード ・・・

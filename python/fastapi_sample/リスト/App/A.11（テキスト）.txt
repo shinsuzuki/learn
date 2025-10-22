@@ -1,0 +1,10 @@
+function resetForm() {
+    ・・・ 既存コード ・・・
+    // 編集中のメモIDをリセット
+    editingMemoId = null;
+    // ▽▽▽ 追加 ▽▽▽
+    document.getElementById('priority').value = '低';
+    document.getElementById('due_date').value = '';
+    document.getElementById('is_completed').checked = false;
+    // △△△ 追加 △△△
+}

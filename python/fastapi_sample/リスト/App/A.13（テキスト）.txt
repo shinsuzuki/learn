@@ -1,0 +1,14 @@
+async function editMemo(memoId) {
+    ・・・ 既存コード ・・・
+    // 取得したメモのタイトルと説明をフォームに設定
+    document.getElementById('title').value = memo.title;
+    document.getElementById('description').value = memo.description;
+    // ▽▽▽ 追加 ▽▽▽
+    document.getElementById('priority').value = memo.status.priority;
+    // 期限日を設定するため、日付が存在する場合のみ設定
+    document.getElementById('due_date').value = memo.status.due_date ? memo.status.due_date.split('T')[0] : '';
+    document.getElementById('is_completed').checked = memo.status.is_completed;
+    // △△△ 追加 △△△
+    // === フォーム ===
+    // フォームの見出しを「メモの編集」に更新
+    ・・・ 既存コード ・・・

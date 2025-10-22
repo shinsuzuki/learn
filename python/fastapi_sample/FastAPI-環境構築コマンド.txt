@@ -1,0 +1,45 @@
+P.23
+仮想環境の構築
+conda create -n fastapi_env python=3.12
+
+
+P.27
+仮想環境の有効化
+conda activate fastapi_env
+
+
+P.27
+FastAPIのインストール
+pip install fastapi
+
+
+P.42
+requestsのインストール
+pip install requests
+
+
+P.46
+Uvicornのインストール
+pip install uvicorn
+
+
+p.49
+サーバーの起動
+uvicorn main:app --reload
+
+
+p.124
+httpx：非同期処理のインストール
+pip install httpx
+
+
+p.141
+SQLAlchemyのインストール
+pip install sqlalchemy
+
+
+p.142
+aiosqliteのインストール
+pip install aiosqlite
+
+

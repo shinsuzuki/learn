@@ -1,0 +1,161 @@
+/* ベース設定: 全体に適用されるスタイル */
+body {
+    /* 使用するフォントファミリー */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* 中央揃えにするためのマージン */
+    margin: 0 auto;
+    /* 全体のコンテンツの最大幅 */
+    max-width: 600px;
+    /* 全体のパディング */
+    padding: 20px;
+    /* 背景色 */
+    background-color: #f4f4f4;
+}
+
+/* 見出しのスタイル */
+h1, h2 {
+    /* 見出しのテキスト色 */
+    color: #2c3e50;
+}
+
+/* フォームコンテナのスタイル */
+.form-container {
+    /* 背景色 */
+    background-color: #ffffff;
+    /* 境界線 */
+    border: 1px solid #dddddd;
+    /* 下マージン */
+    margin-bottom: 20px;
+    /* 内部パディング */
+    padding: 20px;
+    /* 影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* 角の丸み */
+    border-radius: 5px;
+}
+
+/* ラベルのスタイル */
+label {
+    /* ブロック要素として表示 */
+    display: block;
+    /* 下マージン */
+    margin-bottom: 5px;
+    /* 太字 */
+    font-weight: bold;
+}
+
+/* 入力項目のスタイル */
+input[type="text"], textarea {
+    /* 境界線 */
+    border: 1px solid #cccccc;
+    /* 下マージン */
+    margin-bottom: 20px;
+    /* 内部パディング */
+    padding: 10px;
+    /* 全幅から境界線とパディングを差し引いた幅 */
+    width: calc(100% - 22px);
+    /* 角の丸み */
+    border-radius: 3px;
+    /* 内側に影 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* =====【テーブル】===== */
+/* テーブルのスタイル */
+table {
+    /* セルの境界線を一つに */
+    border-collapse: collapse;
+    /* 幅 */
+    width: 100%;
+    /* 背景色 */
+    background-color: #ffffff;
+    /* 影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* 角の丸み */
+    border-radius: 5px;
+    /* 内部の要素がはみ出さないように */
+    overflow: hidden;
+}
+/* テーブルヘッダーとセルのスタイル */
+th, td {
+    /* 境界線 */
+    border: 1px solid #dddddd;
+    /* パディング */
+    padding: 10px;
+    /* テキストの配置 */
+    text-align: left;
+}
+/* テーブルヘッダーのスタイル */
+th {
+    /* 背景色 */
+    background-color: #3498db;
+    /* テキスト色 */
+    color: white;
+}
+
+/* =====【ボタン】===== */
+/* ボタンのスタイル */
+button {
+    /* 背景色 */
+    background-color: #3498db;
+    /* 境界線なし */
+    border: none;
+    /* テキスト色 */
+    color: white;
+    /* ホバー時のカーソル */
+    cursor: pointer;
+    /* パディング */
+    padding: 10px 15px;
+    /* 右マージン */
+    margin-right: 10px;
+    /* 角の丸み */
+    border-radius: 3px;
+    /* 背景色変更のアニメーション */
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    /* ホバー時の背景色 */
+    background-color: #055b93;
+}
+
+/* 更新実行ボタンのスタイル */
+#updateButton {
+    /* 背景色 */
+    background-color: rgb(12, 185, 12);
+}
+#updateButton:hover {
+    /* ホバー時の背景色 */
+    background-color: #218838;
+}
+
+/* 編集ボタンのスタイル */
+.edit {
+    /* 背景色 */
+    background-color: #f7c705cf;
+}
+.edit:hover {
+    /* ホバー時の背景色 */
+    background-color: #b79407df;
+}
+
+/* 削除ボタンのスタイル */
+.delete {
+    /* 背景色 */
+    background-color: #e8210b;
+}
+.delete:hover {
+    /* ホバー時の背景色 */
+    background-color: #a53005df;
+}
+
+/* 編集・削除ボタンのスタイル */
+.edit, .delete {
+    /* パディング */
+    padding: 5px 10px;
+    /* テキスト色 */
+    color: white;
+    /* テキストの下線を消す */
+    text-decoration: none;
+    /* 角の丸み */
+    border-radius: 3px;
+}

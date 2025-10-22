@@ -1,0 +1,12 @@
+{
+    "user_id": 1,
+    "user_name": "田中太郎",
+    "qualifications": [
+        {"qualification_id": 101, "qualification_name": "資格A"},
+        {"qualification_id": 102, "qualification_name": "資格B"}
+    ],
+    "address": {
+        "city": "東京",
+        "postal_code": "123-4567"
+    }
+}

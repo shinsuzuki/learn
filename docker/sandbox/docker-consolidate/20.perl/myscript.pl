@@ -1,0 +1,1 @@
+print("my-script\n")

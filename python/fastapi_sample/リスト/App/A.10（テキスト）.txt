@@ -1,0 +1,45 @@
+・・・ 既存コード ・・・
+<div>
+    <!-- 詳細入力フィールド -->
+    <label for="description">詳細</label>
+    <textarea id="description" placeholder="詳細を入力"></textarea>
+</div>
+<!-- ▽▽▽ 追加 ▽▽▽ -->
+<div>
+    <label for="priority">優先度</label>
+    <select id="priority">
+        <option value="低">低</option>
+        <option value="中">中</option>
+        <option value="高">高</option>
+    </select>
+</div>
+<div>
+    <label for="due_date">期限日</label>
+    <input type="date" id="due_date">
+</div>
+<div>
+    <label for="is_completed">完了</label>
+    <input type="checkbox" id="is_completed">
+</div>
+<!-- △△△ 追加 △△△ -->
+<div class="button-container">
+    <!-- メモ新規登録ボタン -->
+    <button type="submit">新規登録</button>
+    <!-- 更新ボタン（初期状態では非表示） -->
+    <button type="button" id="updateButton" style="display: none;">更新実行</button>
+</div>
+・・・ 既存コード ・・・
+    <!-- メモの一覧を表示するテーブル -->
+    <table id="memos">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>詳細</th>
+                <!-- ▽▽▽ 追加 ▽▽▽ -->
+                <th>優先度</th>
+                <th>期限日</th>
+                <th>完了</th>
+                <th>操作</th>
+                <!-- △△△ 追加 △△△ -->
+            </tr>
+        </thead>

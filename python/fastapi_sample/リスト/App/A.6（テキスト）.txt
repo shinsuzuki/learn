@@ -1,0 +1,12 @@
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
+・・・ 既存コード ・・・
+class Memo(Base):
+    ・・・ 既存コード ・・・
+    # ▽▽▽ MemoStatusSchemaのフィールド ▽▽▽
+    # 優先度
+    priority = Column(String(10), nullable=False)
+    # 期限日
+    due_date = Column(DateTime, nullable=True)
+    # 完了フラグ
+    is_completed = Column(Boolean, default=False)
+    # △△△ MemoStatusSchemaのフィールド △△△

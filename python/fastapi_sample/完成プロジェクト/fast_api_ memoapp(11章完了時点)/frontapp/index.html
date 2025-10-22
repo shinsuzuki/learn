@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- ビューポートの設定: スケーラブルなデザインを実現するための基本設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo App</title>
+    <!-- 外部CSSファイルのリンク -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- アプリケーションのタイトル -->
+    <h1>Memo App</h1>
+    <!-- メモ作成フォームのコンテナ -->
+    <div class="form-container">
+        <h2 id="formTitle">メモの作成</h2>
+        <form id="createMemoForm">
+            <div>
+                <!-- タイトル入力フィールド -->
+                <label for="title">タイトル</label>
+                <input type="text" id="title" placeholder="タイトルを入力" required />
+            </div>
+            <div>
+                <!-- 詳細入力フィールド -->
+                <label for="description">詳細</label>
+                <textarea id="description" placeholder="詳細を入力"></textarea>
+            </div>
+            <div class="button-container">
+                <!-- メモ新規登録ボタン -->
+                <button type="submit">新規登録</button>
+                <!-- 更新ボタン（初期状態では非表示） -->
+                <button type="button" id="updateButton" style="display: none;">更新実行</button>
+            </div>
+        </form>
+    </div>
+    <!-- 区切り線 -->
+    <hr>
+    <!-- メモの一覧を表示するテーブル -->
+    <table id="memos">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>詳細</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JavaScriptによってメモの一覧がここに挿入される -->
+        </tbody>
+    </table>
+    <!-- JavaScriptファイルのリンク -->
+    <script src="app.js"></script>
+</body>
+</html>

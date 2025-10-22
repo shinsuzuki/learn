@@ -1,0 +1,5 @@
+C:\Users\shins\mydev\learn\vs\VS_Labo\ConsoleApp1\bin\Release\net8.0\publish\ConsoleApp1.exe
+C:\Users\shins\mydev\learn\vs\VS_Labo\ConsoleApp1\bin\Release\net8.0\publish\ConsoleApp1.dll
+C:\Users\shins\mydev\learn\vs\VS_Labo\ConsoleApp1\bin\Release\net8.0\publish\ConsoleApp1.deps.json
+C:\Users\shins\mydev\learn\vs\VS_Labo\ConsoleApp1\bin\Release\net8.0\publish\ConsoleApp1.runtimeconfig.json
+C:\Users\shins\mydev\learn\vs\VS_Labo\ConsoleApp1\bin\Release\net8.0\publish\ConsoleApp1.pdb

@@ -1,0 +1,18 @@
+async function fetchAndDisplayMemos() {
+    ・・・ 既存コード ・・・
+        memos.forEach(memo => {
+    ・・・ 既存コード ・・・
+            row.innerHTML = `
+                <td>${memo.title}</td>
+                <td>${memo.description}</td>
+                <!-- ▽▽▽ 追加 ▽▽▽ -->
+                <td>${memo.status.priority}</td>
+                <td>${memo.status.due_date ? memo.status.due_date.split('T')[0] : ''}</td>
+                <td>${memo.status.is_completed ? '完了' : '未完了'}</td>
+                <!-- △△△ 追加 △△△ -->
+                <td>
+                    <button class="edit" data-id="${memo.memo_id}">編集</button>
+                    <button class="delete" data-id="${memo.memo_id}">削除</button>
+                </td>
+            `;
+    ・・・ 既存コード ・・・

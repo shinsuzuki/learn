@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;FolderProfile;FolderProfile1;FolderProfile2</Configurations>
+  </PropertyGroup>
+
+ <Target Name="PostReleaseBuildActions2" BeforeTargets="Publish">
+    <Message Text="--- After Actions Start ---" Importance="high" />
+    <Message Text="--- Configuration='$(Configuration)' ---" Importance="high" />
+
+    <Exec Condition="'$(Configuration)' == 'FolderProfile2'"
+          Command="echo Configuration is $(Configuration)" />
+
+    <Message Text="--- After Actions Completed ---" Importance="high" />
+  </Target>
+
+</Project>
