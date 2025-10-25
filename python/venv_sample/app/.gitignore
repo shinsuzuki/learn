@@ -1,0 +1,4 @@
+# sample とりあえず、venvフォルダを除外
+
+# Environments
+venv/
