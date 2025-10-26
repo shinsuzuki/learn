@@ -152,6 +152,13 @@ def main():
     filter_fd = df.loc[df["職業"] == "教師", ["名前", "年収"]]
     print(filter_fd)
 
+    print("-------------------- picke:save")
+    # df.to_pickle(r"data\output_filter_fd.pkl")
+    # print("pklファイルに保存しました")
+    print("-------------------- picke:read")
+    df_loaded = pd.read_pickle(r"data\output_filter_fd.pkl")
+    print(df_loaded)
+
 
 if __name__ == "__main__":
     main()
