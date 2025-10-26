@@ -1,0 +1,28 @@
+### root
+GET http://localhost:8000
+
+
+### query string
+GET http://localhost:8000/items/?skip=0&limit=10
+
+
+### query string
+Post http://localhost:8000/items/
+Content-Type: application/json
+
+{
+    "name": "Sample Item",
+    "description": "This is a sample item.",
+    "price": 25.5,
+    "tax": 2.5
+}
+
+
+### query string
+GET http://localhost:8000/items/?q=fixedprefix
+
+
+###
+GET http://localhost:8000/items_header/
+User-Agent: CustomUserAgent/1.0
+Abc-Agent: somevalue

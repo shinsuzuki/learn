@@ -155,9 +155,49 @@ def main():
     print("-------------------- picke:save")
     # df.to_pickle(r"data\output_filter_fd.pkl")
     # print("pklファイルに保存しました")
+
     print("-------------------- picke:read")
     df_loaded = pd.read_pickle(r"data\output_filter_fd.pkl")
     print(df_loaded)
+
+    print("-------------------- 結合")
+    data1 = {
+        "ID": [100, 101, 102, 104, 106, 107],
+        "name": ["Alice", "Bob", "Charlie", "Emma", "Grace", "Hana"],
+        "city": [
+            "New York",
+            "Los Angeles",
+            "New York",
+            "Houston",
+            "Los Angeles",
+            "Chicago",
+        ],
+    }
+
+    data2 = {
+        "ID": [100, 101, 102, 103, 104, 105],
+        "name": ["Alice", "Bob", "Charlie", "David", "Emma", "Frank"],
+        "age": [24, 35, 22, 56, 47, 38],
+    }
+
+    df1 = pd.DataFrame(data1).set_index("ID")
+    df2 = pd.DataFrame(data2).set_index("ID")
+
+    # concat
+    print(pd.concat([df1, df2], axis=0, join="outer"))
+    print(pd.concat([df1, df2], axis=1, join="outer"))
+
+    print("-------------------- 結合:列をキーとした結合")
+    # merge
+    print(pd.merge(df1, df2, how="inner", on="name"))  # 内部結合
+    print(pd.merge(df1, df2, how="outer", on="name"))  # 外部結合
+    print(pd.merge(df1, df2, how="left", on="name"))  # 外部結合(左)
+
+    print("-------------------- 結合:JOINによるインデックスキーとした結合")
+    df3 = df2.drop("name", axis=1)
+    print(df3)
+    print(df1.join(df3, how="inner"))  # 内部結合
+    print(df1.join(df3, how="left"))  # 外部結合(左)
 
 
 if __name__ == "__main__":
