@@ -2,11 +2,11 @@
 GET http://localhost:8000
 
 
-### query string
+### クエリパラメータ
 GET http://localhost:8000/items/?skip=0&limit=10
 
 
-### query string
+### リクエストボディ
 Post http://localhost:8000/items/
 Content-Type: application/json
 
@@ -18,11 +18,74 @@ Content-Type: application/json
 }
 
 
-### query string
+### クエリパラメータと文字列の検証
 GET http://localhost:8000/items/?q=fixedprefix
 
 
-###
+### クッキーパラメータを取得する
+GET http://localhost:8000/items_cookie/
+Accept: application/json
+Cookie: my_cookie_value=MyCookieValue; session_id=SessionIdValue
+
+### ヘッダパラメータを取得する
 GET http://localhost:8000/items_header/
 User-Agent: CustomUserAgent/1.0
-Abc-Agent: somevalue
+Abc-Agent: SomeValue_AbcAgent
+
+### レスポンスモデル
+GET http://localhost:8000/items/
+Content-Type: application/json
+
+### レスポンスモデル
+POST http://localhost:8000/user/
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "strongpassword",
+    "full_name": "satoshi nakamato"
+}
+
+### ステータスコード
+POST http://localhost:8000/items2/
+Content-Type: application/json
+
+{
+    "name": "Sample Item",
+    "description": "This is a sample item.",
+    "price": 25.5,
+    "tax": 2.5
+}
+
+### フォーム送信
+POST http://localhost:8000/login/
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser
+&password=strongpassword
+
+### フォーム送信(model)
+POST http://localhost:8000/login_form_model/
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser
+&password=strongpassword
+
+
+### ファイルアップロード
+POST http://localhost:8000/uploadfile/
+Content-Type: multipart/form-data; boundary=boundary1234
+
+--boundary1234
+Content-Disposition: form-data; name="upload_file"; filename="upload.txt"
+Content-Type: text/plain
+
+< upload.txt
+
+--boundary1234--
+
+### エラーハンドリング
+GET http://localhost:8000/items_error/99
+
+### ジェネリックレスポンスモデル
+GET http://localhost:8000/user/99

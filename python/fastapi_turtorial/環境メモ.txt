@@ -1,0 +1,9 @@
+# 仮想環境(conca) ON
+> conda activate fastapi_env
+
+# 仮想環境(conca) OFF
+> conda deactivate
+
+# 実行
+> uvicorn main:app --reload
+
