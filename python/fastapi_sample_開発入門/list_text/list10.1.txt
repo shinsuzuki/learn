@@ -1,0 +1,2 @@
+class TaskCreate(BaseModel):
+    title: str | None = Field(None, example="クリーニングを取りに行く")

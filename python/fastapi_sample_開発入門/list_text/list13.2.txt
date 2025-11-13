@@ -1,0 +1,18 @@
+ from sqlalchemy import select
+ from sqlalchemy.engine import Result
+ from sqlalchemy.orm import Session
++from sqlalchemy.ext.asyncio import AsyncSession
+
+...
+
+-def create_task(db: Session, task_create: task_schema.TaskCreate) -> task_model.Task:
++async def create_task(
++    db: AsyncSession, task_create: task_schema.TaskCreate
++) -> task_model.Task:
+     task = task_model.Task(**task_create.dict())
+     db.add(task)
+-    db.commit()
+-    db.refresh(task)
++    await db.commit()
++    await db.refresh(task)
+     return task

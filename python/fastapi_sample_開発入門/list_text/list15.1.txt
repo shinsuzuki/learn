@@ -1,0 +1,1 @@
+ASYNC_DB_URL = "mysql+aiomysql://root@db:3306/demo?charset=utf8"

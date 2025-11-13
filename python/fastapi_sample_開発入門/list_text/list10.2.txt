@@ -1,0 +1,18 @@
++class TaskBase(BaseModel):
++    title: str | None = Field(None, example="クリーニングを取りに行く")
+ 
+ 
+-class TaskCreate(BaseModel):
++class TaskCreate(TaskBase):
+-    title: str | None = Field(None, example="クリーニングを取りに行く")
++    pass
+ 
+ 
+-class Task(BaseModel):
++class Task(TaskBase):
+     id: int
+-    title: str | None = Field(None, example="クリーニングを取りに行く")
+     done: bool = Field(False, description="完了フラグ")
+
++    class Config:
++        orm_mode = True

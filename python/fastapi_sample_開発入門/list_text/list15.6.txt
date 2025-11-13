@@ -1,0 +1,5 @@
+  demo-app:
+    ...
+    volumes:
+      - .dockervenv:/src/.venv 
+      - .:/src
