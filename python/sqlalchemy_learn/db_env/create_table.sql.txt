@@ -1,0 +1,13 @@
+CREATE TABLE item (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        memo TEXT,
+        price INTEGER,
+        category_id INTEGER,
+        FOREIGN KEY(category_id) REFERENCES item_category(id)
+    );
+CREATE TABLE item_category (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        memo TEXT
+    );

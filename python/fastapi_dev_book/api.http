@@ -1,0 +1,16 @@
+@api_host=http://localhost:8072
+
+### hello
+GET {{api_host}}/hello
+
+### Task
+GET {{api_host}}/tasks
+
+### Task
+POST {{api_host}}/tasks
+Content-Type: application/json
+
+{
+    "title": "New Task",
+    "description": "This is a new task."
+}
