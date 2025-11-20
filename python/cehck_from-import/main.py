@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from util.const.common_const import COMMON_VALUE_1
 from util.const.common_const import UserRole
 from util.const.common_const import AppConfig
@@ -7,9 +8,9 @@ from util.db.sql_helper import (
     get_util_const_common_const,
 )
 
-import os
+
 import json
-from pydantic import BaseModel
+import os
 
 
 def main():
@@ -115,7 +116,7 @@ def main():
         print(f"🔴 JSONデータのバインド中にエラーが発生しました: {e}")
 
     # オブジェクトをJSONへ
-    print(project_obj.model_dump_json())
+    #  print(project_obj.model_dump_json())
 
 
 if __name__ == "__main__":
