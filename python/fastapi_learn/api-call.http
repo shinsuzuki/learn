@@ -43,7 +43,7 @@ Content-Type: application/json
 
 {
     "department_id": 70,
-    "department_name": "営業部12",
+    "department_name": "営業部14",
     "location": "北海道支社"
 }
 

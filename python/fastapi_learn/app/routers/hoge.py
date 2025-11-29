@@ -1,13 +1,16 @@
 from typing import List, cast, Optional
 from fastapi import FastAPI, APIRouter, Depends
 from pydantic import BaseModel
-from sqlalchemy import or_
-from sqlalchemy import select, update, Column
+
+# from sqlalchemy import or_
+from sqlalchemy import insert, update, select, delete
+from sqlalchemy.engine import Result, CursorResult
 from sqlalchemy.orm import Session
 from app.utils.db.database import get_dbsession
 from app.models.departments_model import DepartmentsModel
+from app.schemas.hoge.DepartmentsCommon import Department
 from app.schemas.hoge.DepartmentsOut import DepartmentsOut
-from app.schemas.hoge.DepartmentsListOut import DepartmentsListOut, Department
+from app.schemas.hoge.DepartmentsListOut import DepartmentsListOut
 from app.schemas.hoge.DepartmentsQueryParams import DepartmentsQueryParams
 from app.schemas.hoge.DepartmentsCreate import DepartmentCreate
 from app.schemas.hoge.DepartmentsUpdate import DepartmentUpdate
@@ -53,11 +56,11 @@ def get_departments_by_params(
 ) -> DepartmentsOut:
 
     # クラスが違う場合はcastする
-    dept_list = db.execute(
-        select(DepartmentsModel).where(DepartmentsModel.department_id == params.department_id)
-    )
-
-    response = DepartmentsOut(id=1, departments=cast(List[Department], dept_list.scalars().all()))
+    stmt = select(DepartmentsModel).where(DepartmentsModel.department_id == params.department_id)
+    result = db.execute(stmt)
+    dept = result.scalar_one_or_none()
+    # print(f"dept: {dept}")
+    response = DepartmentsOut(id=1, department=cast(Department, dept))
 
     return response
 
@@ -72,11 +75,25 @@ def post_departments(
 
     try:
         print("insertを実行")
-        dept = DepartmentsModel(**department.model_dump())
-        db.add(dept)
+
+        # ------------------------------古いかもしれない
+        # dept = DepartmentsModel(**department.model_dump())
+        # db.add(dept)
+        # db.commit()
+        # db.refresh(dept)
+        # return MutationResponse(status="success")
+
+        # ------------------------------推奨の書き方
+        stmt = insert(DepartmentsModel).values(
+            department_id=department.department_id,
+            department_name=department.department_name,
+            location=department.location,
+        )
+
+        db.execute(stmt)
         db.commit()
-        db.refresh(dept)
         return MutationResponse(status="success")
+
     except Exception as e:
         db.rollback()
         return MutationResponse(status="failure", message=str(e))
@@ -93,25 +110,50 @@ def put_departments(
     try:
         print("udpateを実行")
 
-        dept = (
-            db.execute(
-                select(DepartmentsModel).where(
-                    DepartmentsModel.department_id == department.department_id
-                )
-            )
-            .scalars()
-            .first()
-        )
+        # ------------------------------古いかもしれない
+        # ①この取得の書き方もあり
+        # dept = db.query(DepartmentsModel).filter_by(department_id=department.department_id).first()
 
-        if dept:
-            # castで対応
-            dept.department_name = cast(Column[str], department.department_name)
-            dept.location = cast(Column[str], department.location)
+        # ②こちらもOK
+        # dept = (
+        #     db.execute(
+        #         select(DepartmentsModel).where(
+        #             DepartmentsModel.department_id == department.department_id
+        #         )
+        #     )
+        #     .scalars()
+        #     .first()
+        # )
+
+        # if dept:
+        #     # castで対応
+        #     dept.department_name = cast(Column[str], department.department_name)
+        #     dept.location = cast(Column[str], department.location)
+        #     db.commit()
+        #     db.refresh(dept)
+        #     return MutationResponse(status="success")
+        # else:
+        #     return MutationResponse(status="failure", message="not found")
+
+        # ------------------------------ 推奨の書き方
+        try:
+            stmt = (
+                update(DepartmentsModel)
+                .where(DepartmentsModel.department_id == department.department_id)
+                .values(department_name=department.department_name)
+            )
+
+            # ステートメントの実行
+            # result: Result = db.execute(stmt)  # これはrowcountでエラー
+            # result: CursorResult = db.execute(stmt)   # これはrowcountでエラー
+            result = cast(CursorResult, db.execute(stmt))  # これはOK
             db.commit()
-            db.refresh(dept)
-            return MutationResponse(status="success")
-        else:
-            return MutationResponse(status="failure", message="not found")
+            msg = f"{result.rowcount} 件のレコードが更新されました。"
+            print(msg)
+            return MutationResponse(status="success", message=msg)
+        except Exception as e:
+            # print("An exception occurred")
+            return MutationResponse(status="failure", message=str(e))
 
     except Exception as e:
         db.rollback()
@@ -129,22 +171,35 @@ def delete_departments(
     try:
         print("delteを実行")
 
-        dept = (
-            db.execute(
-                select(DepartmentsModel).where(
-                    DepartmentsModel.department_id == department.department_id
-                )
-            )
-            .scalars()
-            .first()
+        # ------------------------------ 古いかもしれない
+        #
+        # dept = (
+        #     db.execute(
+        #         select(DepartmentsModel).where(
+        #             DepartmentsModel.department_id == department.department_id
+        #         )
+        #     )
+        #     .scalars()
+        #     .first()
+        # )
+
+        # if dept:
+        #     db.delete(dept)
+        #     db.commit()
+        #     return MutationResponse(status="success")
+        # else:
+        #     return MutationResponse(status="failure", message="not found")
+
+        # ------------------------------ 推奨の書き方
+        stmt = delete(DepartmentsModel).where(
+            DepartmentsModel.department_id == department.department_id
         )
 
-        if dept:
-            db.delete(dept)
-            db.commit()
-            return MutationResponse(status="success")
-        else:
-            return MutationResponse(status="failure", message="not found")
+        result = cast(CursorResult, db.execute(stmt))
+        db.commit()
+        msg = f"{result.rowcount} 件のレコードが削除されました。"
+        print(msg)
+        return MutationResponse(status="success", message=msg)
 
     except Exception as e:
         db.rollback()
