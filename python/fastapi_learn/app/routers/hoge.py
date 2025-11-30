@@ -217,57 +217,21 @@ def delete_departments(
 @router.get("/employees_all")
 def get_employees(db: Session = Depends(get_dbsession)) -> EmployeesListOut:
 
-    # joinはおいておく
-    return EmployeesListOut(id=1, employees=None)
+    # left outer join
+    on_condition = DepartmentsModel.department_id == EmployeesModel.department_id
+    stmt = select(EmployeesModel.last_name, DepartmentsModel.department_name).join(
+        DepartmentsModel, onclause=on_condition, isouter=True
+    )
+    result_list = db.execute(stmt).all()
 
-    # stmt = select(EmployeesModel, DepartmentsModel).join(DepartmentsModel)
-    # result = db.execute(stmt)
-    # joined_data: List[Tuple[EmployeesModel, DepartmentsModel]] = result.all()
-    # output_employees: List[EmployeeOut] = []
+    # print("_______________________________")
+    employees_data: List[Employees] = []
+    for row in result_list:
+        # print(f"{row.last_name} - {row.department_name}")
+        employees_data.append(
+            Employees(last_name=row.last_name, department_name=row.department_name)
+        )
 
-    # db.query(Item.id, ItemCategory.name.label("category_name"), Item.name)
-    # .join(ItemCategory, Item.category_id == ItemCategory.id)
-    # .all()
-
-    # stmt = (
-    #     # select(
-    #     #     DepartmentsModel.department_name.label("部門名"),
-    #     #     EmployeesModel.last_name.label("従業員名"),
-    #     # )
-    #     # .join(EmployeesModel, DepartmentsModel.department_id == EmployeesModel.department_id)
-    #     # .order_by(DepartmentsModel.department_name, EmployeesModel.employee_id)
-    #     select(DepartmentsModel, EmployeesModel)
-    #     .join(EmployeesModel, DepartmentsModel.department_id == EmployeesModel.department_id)
-    #     .order_by(EmployeesModel.employee_id)
-    # )
-
-    # print("------------------------------> before")
-    # result = db.execute(stmt)
-    # print(result)
-    # joined_data: List[Tuple[EmployeesModel, DepartmentsModel]] = result.all()
-
-    # print("------------------------------> after")
-    # print(emp_list)
-
-    # if emp_list:
-    #     print(f"取得件数: {len(emp_list)} 件")
-
-    #     for dept_name, emp_name in emp_list:
-    #         print(f"  部門: {dept_name}, 従業員: {emp_name}")
-    # else:
-    #     print("結果が見つかりませんでした。")
-
-    # response = EmployeesListOut(id=1, employees=cast(List[Employees], emp_list.scalars().all()))
-
-    # return response
-
-    # # クラスが違う場合はcastする
-    # dept_list = db.execute(select(DepartmentsModel))
-    # # dept_list = db.execute(select(DepartmentsModel).where(DepartmentsModel.department_id == 10))
-    # response = DepartmentsListOut(
-    #     id=1, departments=cast(List[Department], dept_list.scalars().all())
-    # )
-
-    # return response
-
-    # return {"message": "employees"}
+    # print("_______________________________")
+    print(employees_data)
+    return EmployeesListOut(id=1, employees=employees_data)
