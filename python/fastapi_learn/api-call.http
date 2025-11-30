@@ -56,3 +56,10 @@ Content-Type: application/json
 {
     "department_id": 70
 }
+
+
+### ==============================
+### 従業員データを全権取得
+### ======================1========
+GET {{api_host}}/hoge/employees_all
+

@@ -3,6 +3,7 @@ from app.utils.db.database import Base
 
 
 class DepartmentsModel(Base):
+    # class DepartmentsModel(Base):
     """
     Departmentsモデル
     """

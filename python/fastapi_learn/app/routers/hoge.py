@@ -1,13 +1,14 @@
-from typing import List, cast, Optional
+from typing import List, cast, Optional, Tuple
 from fastapi import FastAPI, APIRouter, Depends
 from pydantic import BaseModel
 
-# from sqlalchemy import or_
+from sqlalchemy import or_
 from sqlalchemy import insert, update, select, delete
 from sqlalchemy.engine import Result, CursorResult
 from sqlalchemy.orm import Session
 from app.utils.db.database import get_dbsession
 from app.models.departments_model import DepartmentsModel
+from app.models.employees_model import EmployeesModel
 from app.schemas.hoge.DepartmentsCommon import Department
 from app.schemas.hoge.DepartmentsOut import DepartmentsOut
 from app.schemas.hoge.DepartmentsListOut import DepartmentsListOut
@@ -16,6 +17,8 @@ from app.schemas.hoge.DepartmentsCreate import DepartmentCreate
 from app.schemas.hoge.DepartmentsUpdate import DepartmentUpdate
 from app.schemas.hoge.DepartmentsDelete import DepartmentsDelete
 from app.schemas.common.MutationResponse import MutationResponse
+from app.schemas.hoge.EmployeesCommon import Employees
+from app.schemas.hoge.EmployeesListOut import EmployeesListOut
 
 router = APIRouter(
     prefix="/hoge",
@@ -211,6 +214,60 @@ def delete_departments(
 # ======================================
 # 従業員
 # ======================================
-@router.get("/employees")
-def get_employees():
-    return {"message": "employees"}
+@router.get("/employees_all")
+def get_employees(db: Session = Depends(get_dbsession)) -> EmployeesListOut:
+
+    # joinはおいておく
+    return EmployeesListOut(id=1, employees=None)
+
+    # stmt = select(EmployeesModel, DepartmentsModel).join(DepartmentsModel)
+    # result = db.execute(stmt)
+    # joined_data: List[Tuple[EmployeesModel, DepartmentsModel]] = result.all()
+    # output_employees: List[EmployeeOut] = []
+
+    # db.query(Item.id, ItemCategory.name.label("category_name"), Item.name)
+    # .join(ItemCategory, Item.category_id == ItemCategory.id)
+    # .all()
+
+    # stmt = (
+    #     # select(
+    #     #     DepartmentsModel.department_name.label("部門名"),
+    #     #     EmployeesModel.last_name.label("従業員名"),
+    #     # )
+    #     # .join(EmployeesModel, DepartmentsModel.department_id == EmployeesModel.department_id)
+    #     # .order_by(DepartmentsModel.department_name, EmployeesModel.employee_id)
+    #     select(DepartmentsModel, EmployeesModel)
+    #     .join(EmployeesModel, DepartmentsModel.department_id == EmployeesModel.department_id)
+    #     .order_by(EmployeesModel.employee_id)
+    # )
+
+    # print("------------------------------> before")
+    # result = db.execute(stmt)
+    # print(result)
+    # joined_data: List[Tuple[EmployeesModel, DepartmentsModel]] = result.all()
+
+    # print("------------------------------> after")
+    # print(emp_list)
+
+    # if emp_list:
+    #     print(f"取得件数: {len(emp_list)} 件")
+
+    #     for dept_name, emp_name in emp_list:
+    #         print(f"  部門: {dept_name}, 従業員: {emp_name}")
+    # else:
+    #     print("結果が見つかりませんでした。")
+
+    # response = EmployeesListOut(id=1, employees=cast(List[Employees], emp_list.scalars().all()))
+
+    # return response
+
+    # # クラスが違う場合はcastする
+    # dept_list = db.execute(select(DepartmentsModel))
+    # # dept_list = db.execute(select(DepartmentsModel).where(DepartmentsModel.department_id == 10))
+    # response = DepartmentsListOut(
+    #     id=1, departments=cast(List[Department], dept_list.scalars().all())
+    # )
+
+    # return response
+
+    # return {"message": "employees"}
