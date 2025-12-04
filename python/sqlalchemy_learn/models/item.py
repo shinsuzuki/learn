@@ -19,3 +19,7 @@ class Item(Base):
     def item_info(self):
         """itemクラスの属性を整形して返却"""
         return f"id: {self.id}, 商品名: {self.name}, 値段: {self.price}円, メモ: {self.memo}, カテゴリid: {self.category_id}"
+
+    def __repr__(self):
+        """リプレゼンテーション"""
+        return f"id: {self.id}, 商品名: {self.name}, 値段: {self.price}円, メモ: {self.memo}, カテゴリid: {self.category_id}"
