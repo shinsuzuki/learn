@@ -41,7 +41,7 @@ db_session = sessionmaker(
 # 注意) FastAPIの依存性注入の文脈において、ジェネレーター関数（yield を含む関数）を
 # データベースセッションの管理に使う場合、@contextmanager デコレータは不要です。
 #
-@contextmanager  # << 必要
+@contextmanager  # << FastAPIでは不要
 def get_dbsession() -> Generator[Session, None, None]:
 
     # db: Session = session()
