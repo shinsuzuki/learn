@@ -1,5 +1,5 @@
 from __future__ import annotations  # おまじない、python不要だが
-from typing import Optional, List, TYPE_CHECKING
+from typing import Optional, List
 from sqlalchemy import (
     create_engine,
     Column,
@@ -12,7 +12,7 @@ from sqlalchemy import (
 )
 
 # 独自のbaseモジュールからのインポート
-from models.base import Base, Mapped, mapped_column, relationship
+from models.base import Base, Mapped, mapped_column, relationship, TYPE_CHECKING
 
 
 # --------------------------------------------------------------------------
