@@ -1,5 +1,6 @@
 import oracledb
 from typing import Generator
+from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import (
@@ -26,7 +27,8 @@ DATABASE_URL = f"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASSWORD}@{ORACLE_HOST}
 
 # 同期セッションの設定
 engine = create_engine(DATABASE_URL, echo=True)  # echoTrueにしてSQLを出力
-session = sessionmaker(
+
+db_session = sessionmaker(
     bind=engine,
     autocommit=False,
     autoflush=False,
@@ -35,8 +37,11 @@ session = sessionmaker(
 
 
 # DBとのセッションを扱う関数
+@contextmanager  # << 必要
 def get_dbsession() -> Generator[Session, None, None]:
-    db: Session = session()
+
+    # db: Session = session()
+    db: Session = db_session()
 
     try:
         print(">> db session yield.")

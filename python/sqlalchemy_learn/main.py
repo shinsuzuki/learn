@@ -2,14 +2,16 @@ import os
 from utils.db.database import get_dbsession, select, insert, update, delete, func
 from models.department_model import Department
 from models.employee_model import Employee
+from sqlalchemy.orm import Session
 
 
 def main():
     os.system("cls")
 
     """メイン実行関数"""
-    gen = get_dbsession()
-    db = next(gen)
+    # gen = get_dbsession()
+    # db = next(gen)
+    # db = get_dbsession()
 
     # ============================================================ セレクト系を試す
 
@@ -17,11 +19,15 @@ def main():
     # 全取得
     # ====================
     print(">> 全取得")
-    stmt = select(Employee).order_by(Employee.id)
-    for row in db.execute(stmt):
-        print(row)  # __repr__で表示
-        # タプルの中身を表示する例
-        # print(row[0])
+
+    with get_dbsession() as db:
+        stmt = select(Employee).order_by(Employee.id)
+        for row in db.execute(stmt):
+            print(row)  # __repr__で表示
+            # タプルの中身を表示する例
+            # print(row[0])
+
+    return
 
     # ====================
     # 特定のカラムを取得
