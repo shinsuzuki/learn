@@ -1,8 +1,40 @@
 from __future__ import annotations
-from typing import List, Optional, TYPE_CHECKING
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, ForeignKey, Date
-from datetime import date
+
+# ----------------------------------------------------
+# 1. 宣言的システムと型ヒントのための必須インポート
+# ----------------------------------------------------
+from typing import (
+    Annotated,
+    TYPE_CHECKING,
+    List,
+    Optional,
+)
+
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    registry,
+    mapped_column,
+)
+
+# ----------------------------------------------------
+# 2. データ型のインポート
+# ----------------------------------------------------
+# SQLが認識するデータベース固有の型を定義
+from sqlalchemy import (
+    Boolean,
+    Column,
+    Date,
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    JSON,
+    Numeric,
+    String,
+)
+
+from datetime import date, datetime
 from decimal import Decimal
 
 

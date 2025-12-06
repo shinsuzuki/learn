@@ -1,19 +1,10 @@
 from __future__ import annotations
 from typing import Optional
 from datetime import date
-from sqlalchemy import (
-    create_engine,
-    Column,
-    Integer,
-    String,
-    ForeignKey,
-    Date,
-    desc,
-    func,
-)
+from sqlalchemy.orm import relationship
 
 # 独自のbaseモジュールからのインポート
-from models.base import Base, Mapped, mapped_column, relationship, TYPE_CHECKING
+from models.base import Base, Mapped, mapped_column, TYPE_CHECKING, String, Date, ForeignKey
 
 
 # --------------------------------------------------------------------------

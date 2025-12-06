@@ -2,6 +2,14 @@ import oracledb
 from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy import (
+    select,
+    insert,
+    update,
+    delete,
+    desc,
+    func,
+)
 
 
 # ==============================================================================
@@ -14,8 +22,6 @@ ORACLE_CONNECT_STRING = "localhost:1521/orcl"
 ORACLE_HOST = "localhost"
 ORACLE_PORT = "1521"
 ORACLE_SERVICE = "orcl"
-
-# DATABASE_URL = f"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASSWORD}@{ORACLE_CONNECT_STRING}"
 DATABASE_URL = f"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASSWORD}@{ORACLE_HOST}:{ORACLE_PORT}/{ORACLE_SERVICE}"
 
 # 同期セッションの設定

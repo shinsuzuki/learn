@@ -1,8 +1,5 @@
 import os
-import pprint
-from sqlalchemy import or_, select, desc, insert, update, delete, func
-
-from utils.db.database import get_dbsession
+from utils.db.database import get_dbsession, select, insert, update, delete, func
 from models.department_model import Department
 from models.employee_model import Employee
 
@@ -22,7 +19,9 @@ def main():
     print(">> 全取得")
     stmt = select(Employee).order_by(Employee.id)
     for row in db.execute(stmt):
-        print(row)
+        print(row)  # __repr__で表示
+        # タプルの中身を表示する例
+        # print(row[0])
 
     # ====================
     # 特定のカラムを取得
