@@ -1,17 +1,12 @@
 import oracledb
 from typing import Generator
 from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session
 
 
 # ==============================================================================
 # database.py
 # ==============================================================================
-# ベースクラスの定義
-class Base(DeclarativeBase):
-    pass
-
-
 # oracle接続情報
 ORACLE_USER = "dbuser"
 ORACLE_PASSWORD = "sasa"

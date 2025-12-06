@@ -1,4 +1,5 @@
-from typing import Optional, List
+from __future__ import annotations  # おまじない、python不要だが
+from typing import Optional, List, TYPE_CHECKING
 from sqlalchemy import (
     create_engine,
     Column,
@@ -9,8 +10,18 @@ from sqlalchemy import (
     desc,
     func,
 )
-from sqlalchemy.orm import sessionmaker, relationship, Mapped, mapped_column
-from utils.db.database import Base
+
+# 独自のbaseモジュールからのインポート
+from models.base import Base, Mapped, mapped_column, relationship
+
+
+# --------------------------------------------------------------------------
+# 【重要】循環参照の回避と型チェックへの対応
+# --------------------------------------------------------------------------
+# Pythonの実行時 (runtime) には False になるため、インポートはスキップされます。
+# Pylanceなどの静的型チェッカーが解析する時のみ True になり、インポートが実行されます。
+if TYPE_CHECKING:
+    from models.employee_model import Employee
 
 
 class Department(Base):
@@ -33,7 +44,17 @@ class Department(Base):
     # ----------------------------------------
     # リレーションシップ (1対多)、(連携先の名前に注意)
     # ----------------------------------------
-    employee = relationship("Employee", back_populates="department")  # 逆側に関連付ける
+    # employee = relationship("Employee", back_populates="department")  # 逆側に関連付ける
+
+    # -----------------------------------------------------------
+    # v2用
+    # -----------------------------------------------------------
+    # 【前方参照】
+    # 後の行で定義されるEmployeeクラスを型ヒント (Mapped) と relationship の両方で文字列で指定している。
+    # -----------------------------------------------------------
+    employee: Mapped[List["Employee"]] = relationship(
+        "Employee", back_populates="department"  # relationshipのターゲットも文字列
+    )
 
     def __repr__(self):
         return f"<Department(id={self.id}, name='{self.name}')>"
