@@ -43,9 +43,7 @@ def get_departments(db: Session = Depends(get_dbsession)) -> DepartmentsListOut:
     # クラスが違う場合はcastする
     dept_list = db.execute(select(DepartmentsModel))
     # dept_list = db.execute(select(DepartmentsModel).where(DepartmentsModel.department_id == 10))
-    response = DepartmentsListOut(
-        id=1, departments=cast(List[Department], dept_list.scalars().all())
-    )
+    response = DepartmentsListOut(id=1, departments=cast(List[Department], dept_list.scalars().all()))
 
     return response
 
@@ -54,9 +52,7 @@ def get_departments(db: Session = Depends(get_dbsession)) -> DepartmentsListOut:
 # IDにより部署を1件取得
 # ======================================
 @router.get("/departments_by_params")
-def get_departments_by_params(
-    params: DepartmentsQueryParams, db: Session = Depends(get_dbsession)
-) -> DepartmentsOut:
+def get_departments_by_params(params: DepartmentsQueryParams, db: Session = Depends(get_dbsession)) -> DepartmentsOut:
 
     # クラスが違う場合はcastする
     stmt = select(DepartmentsModel).where(DepartmentsModel.department_id == params.department_id)
@@ -72,9 +68,7 @@ def get_departments_by_params(
 # 部署を登録
 # ======================================
 @router.post("/departments")
-def post_departments(
-    department: DepartmentCreate, db: Session = Depends(get_dbsession)
-) -> MutationResponse:
+def post_departments(department: DepartmentCreate, db: Session = Depends(get_dbsession)) -> MutationResponse:
 
     try:
         print("insertを実行")
@@ -106,9 +100,7 @@ def post_departments(
 # 部署を更新
 # ======================================
 @router.put("/departments")
-def put_departments(
-    department: DepartmentUpdate, db: Session = Depends(get_dbsession)
-) -> MutationResponse:
+def put_departments(department: DepartmentUpdate, db: Session = Depends(get_dbsession)) -> MutationResponse:
 
     try:
         print("udpateを実行")
@@ -167,9 +159,7 @@ def put_departments(
 # 部署を削除
 # ======================================
 @router.delete("/departments")
-def delete_departments(
-    department: DepartmentsDelete, db: Session = Depends(get_dbsession)
-) -> MutationResponse:
+def delete_departments(department: DepartmentsDelete, db: Session = Depends(get_dbsession)) -> MutationResponse:
 
     try:
         print("delteを実行")
@@ -194,9 +184,7 @@ def delete_departments(
         #     return MutationResponse(status="failure", message="not found")
 
         # ------------------------------ 推奨の書き方
-        stmt = delete(DepartmentsModel).where(
-            DepartmentsModel.department_id == department.department_id
-        )
+        stmt = delete(DepartmentsModel).where(DepartmentsModel.department_id == department.department_id)
 
         result = cast(CursorResult, db.execute(stmt))
         db.commit()
@@ -228,9 +216,7 @@ def get_employees(db: Session = Depends(get_dbsession)) -> EmployeesListOut:
     employees_data: List[Employees] = []
     for row in result_list:
         # print(f"{row.last_name} - {row.department_name}")
-        employees_data.append(
-            Employees(last_name=row.last_name, department_name=row.department_name)
-        )
+        employees_data.append(Employees(last_name=row.last_name, department_name=row.department_name))
 
     # print("_______________________________")
     print(employees_data)

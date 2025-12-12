@@ -1,0 +1,6 @@
+# 【Mac OSの方はこちらを使用してください】
+font.family: Hiragino Maru Gothic Pro
+
+# 【Windowsの方はこちらを使用してください】
+# 上の行（Mac OSの場合）は削除するかコメントアウトし、下の「#」を外して有効にしてください
+#font.family: Yu Gothic
