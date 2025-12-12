@@ -26,7 +26,7 @@ ORACLE_SERVICE = "orcl"
 DATABASE_URL = f"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASSWORD}@{ORACLE_HOST}:{ORACLE_PORT}/{ORACLE_SERVICE}"
 
 # 同期セッションの設定
-engine = create_engine(DATABASE_URL, echo=True)  # echoTrueにしてSQLを出力
+engine = create_engine(DATABASE_URL, echo=False)  # echoTrueにしてSQLを出力
 
 db_session = sessionmaker(
     bind=engine,

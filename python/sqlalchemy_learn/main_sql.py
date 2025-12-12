@@ -1,18 +1,17 @@
 import os
+
 from utils.db.database import get_dbsession, select, insert, update, delete, func
 from models.department_model import Department
 from models.employee_model import Employee
 from sqlalchemy.orm import Session
+from sqlalchemy import text
+from schemas.employee_schema import EmployeeSchema
 
 
 def main():
     os.system("cls")
 
     """メイン実行関数"""
-    # gen = get_dbsession()
-    # db = next(gen)
-    # db = get_dbsession()
-
     # ============================================================ セレクト系を試す
     # FastAPIの依存性注入（DI）システムが内部的に with 句と同じ役割を果たしています。
     # FastAPIではWithは不要です
@@ -22,82 +21,90 @@ def main():
         # ====================
         # 全取得
         # ====================
-        print(">> 全取得")
-        stmt = select(Employee).order_by(Employee.id)
-        for row in db.execute(stmt):
-            print(row)  # __repr__で表示
-            # タプルの中身を表示する例
-            # print(row[0])
+        print("========== 全件取得")
+        results = db.execute(text("select * from employee"))
+        for row in results.fetchall():
+            print(f"{row.name}, {row.job_title}")
+        # > Alice, Manager
+        # > Bob, Sales Rep
+        #       :
 
         # ====================
-        # 特定のカラムを取得
+        # 全取得し、データクラスのリストへバインド（辞書を使用）
         # ====================
-        print(">> 特定のカラムを取得")
-        stmt = select(Employee.id, Employee.name).order_by(Employee.id)
-        for row in db.execute(stmt):
-            print(row)
+        print("========== 全取得し、データクラスのリストへバインド（辞書を使用）")
+        results = db.execute(text("select * from employee"))
+
+        # Resultから辞書に変換、アンパックしてバインド
+        emp_list: list[EmployeeSchema] = [EmployeeSchema(**dict(emp)) for emp in results.mappings()]
+        for emp in emp_list:
+            print(f"{emp.id},{emp.name},{emp.job_title}")
+        # > 101,Alice,Manager
+        # > 102,Bob,Sales Rep
+        #       :
 
         # ====================
-        # Where取得
+        # 全取得し、データクラスのリストへバインド（model_validateを使用）
         # ====================
-        print(">> Where取得")
-        stmt = select(Employee.id, Employee.name, Employee.salary).where(Employee.salary > 70000)
-        for row in db.execute(stmt):
-            print(row)
+        print("========== 全取得し、データクラスのリストへバインド（model_validateを使用）")
+        results = db.execute(text("select * from employee"))
+
+        # model_validateを使用してバインド
+        emp_list: list[EmployeeSchema] = [EmployeeSchema.model_validate(row) for row in results]
+        for emp in emp_list:
+            print(f"{emp.id},{emp.name},{emp.job_title}")
+        # > 101,Alice,Manager
+        # > 102,Bob,Sales Rep
+        #       :
 
         # ====================
-        # 集計とグループ
+        # 1件取得し、データクラスへバインド（辞書を使用）
         # ====================
-        print(">> 集計とグループ")
-        stmt = (
-            select(
-                # fmt: off
-                Employee.job_title,
-                func.avg(Employee.salary).label("avg_employee_salary")
-                # fmt: on
-            )
-            .group_by(Employee.job_title)
-            .order_by(Employee.job_title)
-        )
+        print("========== 1件取得し、データクラスへバインド")
+        result = db.execute(text("select * from employee where id = 101"))
 
-        for row in db.execute(stmt):
-            print(row)
+        # Resultから辞書に変換し最初のデータを取得
+        row = result.mappings().fetchone()
 
-        # ====================
-        # 外部結合(最初にselectの項目に書いたものが基準、otuerjoinの第一引数に結合したいモデル・テーブルを指定)
-        # ====================
-        print(">> 外部結合")
-        stmt = select(Employee.name, Department.name).outerjoin(Department, Department.id == Employee.department_id)
-
-        for row in db.execute(stmt):
-            print(row)
+        if row:
+            # 辞書に変換、アンパックでバインド
+            emp_dict = dict(row)
+            employee_instance = EmployeeSchema(**emp_dict)
+            print(employee_instance.__dict__)
+        else:
+            print("データがない")
+        # > {'id': 101, 'name': 'Alice', 'job_title': 'Manager', 'salary': 80000, 'hire_date': datetime.date(2020, 1, 1), 'department_id': 10}
 
         # ====================
-        # 副問合せ(平均,scalar_subquery)
+        # 1件取得し、データクラスへバインド（model_validateを使用）
         # ====================
-        print(">> 副問合せ(scalar_subquery)")
-        # 内部selectを作成
-        avg_salary_sq = select(func.avg(Employee.salary)).scalar_subquery()
+        print("========== 1件取得し、データクラスへバインド（model_validateを使用）")
+        result = db.execute(text("select * from employee where id = 101"))
 
-        # 作成したサブクエリーを設定
-        stmt = select(Employee.name, Employee.salary).where(Employee.salary > avg_salary_sq).order_by(Employee.salary)
-        for row in db.execute(stmt):
-            print(row)
+        row = result.first()
+        if row:
+            # model_validateによりバインド
+            emp = EmployeeSchema.model_validate(row)
+            print(f"{emp.id},{emp.name},{emp.job_title}")
+        else:
+            print("データがない")
+        # > 101,Alice,Manager
 
         # ====================
-        # 副問合せ(IN句を利用する,subquery)
+        # 単一の列を取得
         # ====================
-        print(">> 副問合せ(IN句を利用する)")
-        tokyo_depts_sq = select(Department.id).where(Department.location == "Tokyo").scalar_subquery()
+        print("========== 単一の列を取得")
+        names = db.execute(text("select name from employee")).scalars().all()
+        print(f"names: {names}")
+        # > names: ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace
 
-        stmt = (
-            select(Employee.name, Department.name, Department.location)
-            .outerjoin(Department, Department.id == Employee.department_id)
-            .where(Department.id.in_(tokyo_depts_sq))
-            .order_by(Employee.name)
-        )
-        for row in db.execute(stmt):
-            print(row)
+        # ====================
+        # 件数を取得
+        # ====================
+        print("========== 件数を取得")
+        count = db.execute(text("select count(*) from employee")).scalar_one()
+        print(f"count: {count}")
+        # > count: 10
 
 
 if __name__ == "__main__":
