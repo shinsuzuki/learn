@@ -31,7 +31,10 @@ router = APIRouter(
 # ======================================
 @router.get("/")
 def root():
-    return {"message": "hoge:Hello World"}
+    str1 = "mozi"
+    str2 = "plus"
+    str3 = f"{str1 }-{str2}"
+    return {"message": f"hoge:Hello World:{str3}"}
 
 
 # ========================================================== departments

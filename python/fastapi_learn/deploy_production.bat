@@ -10,8 +10,8 @@
 @rem ソースディレクトリをカレントディレクトリに設定
 set SOURCE_DIR="."
 
-@rem 宛先ディレクトリ：必ずリリース先のパスに変更してください
-set DEST_DIR="dist"
+@rem 宛先ディレクトリ
+set DEST_DIR="dist/production"
 
 @rem ログファイルパス
 @REM set LOG_FILE="robocopy_log.txt"
@@ -22,10 +22,16 @@ set DEST_DIR="dist"
 
 @rem 除外ディレクトリの定義 。(スペース区切りで羅列)
 @rem 末尾に \ は不要です。
-set EXCLUDE_DIRS=".git" ".vscode" ".venv" "env" "__pycache__" "node_modules" "dist" "build" "tests" ".mypy_cache"
+set EXCLUDE_DIRS=
+set EXCLUDE_DIRS=%EXCLUDE_DIRS% ".git" ".vscode" ".venv" "env"
+set EXCLUDE_DIRS=%EXCLUDE_DIRS% "__pycache__" "node_modules" "dist"
+set EXCLUDE_DIRS=%EXCLUDE_DIRS% "build" "tests" ".mypy_cache"
 
 @rem 除外ファイルの定義 (スペース区切りで羅列、ワイルドカード(*)使用可能)
-set EXCLUDE_FILES=".gitignore" ".env" ".DS_Store" "Thumbs.db" "settings_dev.py" "*.pyc" "*.bak" "*.bat" "*.http"
+set EXCLUDE_FILES=
+set EXCLUDE_FILES=%EXCLUDE_FILES% ".gitignore" ".env" ".DS_Store" "Thumbs.db"
+set EXCLUDE_FILES=%EXCLUDE_FILES% "settings_dev.py" "*.pyc" "*.bak"
+set EXCLUDE_FILES=%EXCLUDE_FILES% "*.bat" "*.http"
 
 @rem ======================================================================
 @rem 3. 宛先ディレクトリのクリーンアップ

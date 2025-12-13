@@ -84,6 +84,19 @@ def main():
     print(list(dict.keys()))
     print(list(dict.values()))
 
+    # 動的なクラス
+    class db:
+        def __init__(self):
+            self.port = 8080
+            self.user = "user"
+            self.password = "passwordd"
+
+        def login(self):
+            print("login!")
+
+    dbinfo = db()
+    dbinfo.login()
+
 
 if __name__ == "__main__":
     main()
