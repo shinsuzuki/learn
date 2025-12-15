@@ -17,3 +17,25 @@ b >> 抽出したファイルをコピー(appディレクトリ,requirements.txt
 以上で、ローカルで動かせた。
 
 >>しかし、サーバーで動かす方法は未確認。
+
+----------------------------------------
+3. サーバー環境でのデプロイ（Gunicornとの組み合わせ）
+
+大規模な本番環境では、Uvicorn単体ではなく、プロセスを管理するGunicornなどのWSGI/ASGIマネージャと組み合わせて使用するのが標準的です。
+
+3.1 Gunicornをインストール:
+
+  > pip install gunicorn
+
+3.2 GunicornでUvicornワーカーを起動:
+
+  # Gunicornを使って、Uvicornのワーカーを起動するコマンド
+  > gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
+
+
+:オプション                              :意味
+-w 4                                    ワーカープロセス数（例: 4つ）を指定します。
+-k uvicorn.workers.UvicornWorker        GunicornにUvicornの非同期ワーカーを使用するよう指示します。
+-b 0.0.0.0:8000                         バインディング（ホストとポート）を指定します。
+
+この構成により、Gunicornがプロセス監視、リクエストのロードバランシング、ワーカーの死活管理を担当し、Uvicornワーカーが高い非同期I/Oパフォーマンスを提供します。
