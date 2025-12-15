@@ -1,0 +1,64 @@
+@api_host = http://localhost:8093
+
+### root
+GET {{api_host}}
+
+#=========================================================== SQLAlchemy(ORM)
+###
+GET {{api_host}}/hoge/
+
+### ==============================
+### 部署データを全権取得
+### ==============================
+GET {{api_host}}/hoge/departments_all
+
+### ==============================
+### IDにより部署データを1件取得
+### ==============================
+GET {{api_host}}/hoge/departments_by_params
+Content-Type: application/json
+
+{
+    "department_id": 20
+}
+
+### ==============================
+### 部署データ登録
+### ==============================
+POST {{api_host}}/hoge/departments
+Content-Type: application/json
+
+{
+    "department_id": 70,
+    "department_name": "営業部5",
+    "location": "青森支社"
+}
+
+### ==============================
+### 部署データ更新
+### ==============================
+PUT {{api_host}}/hoge/departments
+Content-Type: application/json
+
+{
+    "department_id": 70,
+    "department_name": "営業部14",
+    "location": "北海道支社"
+}
+
+### ==============================
+### 部署データ削除
+### ==============================
+DELETE {{api_host}}/hoge/departments
+Content-Type: application/json
+
+{
+    "department_id": 70
+}
+
+
+### ==============================
+### 従業員データを全権取得
+### ======================1========
+GET {{api_host}}/hoge/employees_all
+

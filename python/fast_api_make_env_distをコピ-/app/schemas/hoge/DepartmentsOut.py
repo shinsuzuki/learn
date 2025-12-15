@@ -9,5 +9,5 @@ from app.schemas.hoge.DepartmentsCommon import Department
 
 
 class DepartmentsOut(BaseModel):
-    id: int = Field(default=0, description="表示用ID")
+    id: int
     department: Department

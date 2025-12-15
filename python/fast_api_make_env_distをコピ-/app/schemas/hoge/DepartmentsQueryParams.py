@@ -2,4 +2,4 @@ from pydantic import BaseModel, Field
 
 
 class DepartmentsQueryParams(BaseModel):
-    department_id: int = Field(..., description="部署ID", le=100)
+    department_id: int = Field(..., description="ID")
