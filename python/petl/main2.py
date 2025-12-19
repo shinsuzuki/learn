@@ -2,6 +2,9 @@ import petl as etl
 import requests
 import json
 import datetime
+import oracledb
+
+# from sqlalchemy import create_engine
 
 
 def main():
@@ -205,6 +208,37 @@ def main():
     #     "email": "Nikita@garfield.biz"
     #   }
     # ]
+
+    # ----------------------------
+    print("== DBよりデータを取得(oracledb)")
+    ORACLE_USER = "dbuser"
+    ORACLE_PASSWORD = "sasa"
+    ORACLE_HOST = "localhost"
+    ORACLE_PORT = "1521"
+    ORACLE_SERVICE = "orcl"
+
+    # Oracleへの直接接続
+    connection = oracledb.connect(
+        user=ORACLE_USER,
+        password=ORACLE_PASSWORD,
+        dsn=f"{ORACLE_HOST}:{ORACLE_PORT}/{ORACLE_SERVICE}",
+    )
+
+    table = etl.fromdb(connection, "select * from employee")
+    print(table)
+    # +-----+---------+-----------+--------+---------------------+---------------+
+    # | ID  | NAME    | JOB_TITLE | SALARY | HIRE_DATE           | DEPARTMENT_ID |
+    # +=====+=========+===========+========+=====================+===============+
+    # | 101 | Alice   | Manager   |  80000 | 2020-01-01 00:00:00 |            10 |
+    # +-----+---------+-----------+--------+---------------------+---------------+
+    # | 102 | Bob     | Sales Rep |  50000 | 2021-05-15 00:00:00 |            10 |
+    # +-----+---------+-----------+--------+---------------------+---------------+
+    # | 103 | Charlie | Sales Rep |  52000 | 2022-10-10 00:00:00 |            10 |
+    # +-----+---------+-----------+--------+---------------------+---------------+
+    # | 201 | David   | Engineer  |  75000 | 2019-03-20 00:00:00 |            20 |
+    # +-----+---------+-----------+--------+---------------------+---------------+
+    # | 202 | Eve     | Engineer  |  75000 | 2023-07-07 00:00:00 |            20 |
+    # +-----+---------+-----------+--------+---------------------+---------------+
 
     print("\n<-- petl end")
 

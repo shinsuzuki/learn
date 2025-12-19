@@ -1,8 +1,14 @@
 certifi==2025.11.12
+cffi==2.0.0
 charset-normalizer==3.4.4
 colorama==0.4.6
+cryptography==46.0.3
+greenlet==3.3.0
 idna==3.11
+oracledb==3.4.1
 petl==1.7.17
+pycparser==2.23
 requests==2.32.5
+typing_extensions==4.15.0
 urllib3==2.6.2
 win32_setctime==1.2.0
