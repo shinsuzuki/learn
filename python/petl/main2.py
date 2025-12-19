@@ -225,6 +225,7 @@ def main():
     )
 
     table = etl.fromdb(connection, "select * from employee")
+    etl.tocsv(table, "employee.csv")
     print(table)
     # +-----+---------+-----------+--------+---------------------+---------------+
     # | ID  | NAME    | JOB_TITLE | SALARY | HIRE_DATE           | DEPARTMENT_ID |
