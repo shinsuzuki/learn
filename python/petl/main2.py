@@ -163,6 +163,49 @@ def main():
     # id=4, name=alias odio sit, email=Lew@alysha.tv
     # id=5, name=vero eaque aliquid doloribus et culpa, email=Hayden@althea.biz
 
+    # ----------------------------
+    print("== テーブルをソート(email)")
+    table_sorted = etl.sort(table_a, "email")
+    print(table_sorted)
+    # +----+-------------------------------------------+------------------------+
+    # | id | name                                      | email                  |
+    # +====+===========================================+========================+
+    # |  1 | id labore ex et quam laborum              | Eliseo@gardner.biz     |
+    # +----+-------------------------------------------+------------------------+
+    # |  5 | vero eaque aliquid doloribus et culpa     | Hayden@althea.biz      |
+    # +----+-------------------------------------------+------------------------+
+    # |  2 | quo vero reiciendis velit similique earum | Jayne_Kuhic@sydney.com |
+    # +----+-------------------------------------------+------------------------+
+    # |  4 | alias odio sit                            | Lew@alysha.tv          |
+    # +----+-------------------------------------------+------------------------+
+    # |  3 | odio adipisci rerum aut animi             | Nikita@garfield.biz    |
+    # +----+-------------------------------------------+------------------------+
+
+    # ----------------------------
+    print("== テーブルをCSVに保存")
+    etl.tocsv(table_d, "output_table_d.csv")
+    # == otuput_table_d.csv ==
+    # id,name,email
+    # 2,quo vero reiciendis velit similique earum,Jayne_Kuhic@sydney.com
+    # 3,odio adipisci rerum aut animi,Nikita@garfield.biz
+
+    # ----------------------------
+    print("== テーブルをJSONに保存")
+    etl.tojson(table_d, "output_table_d.json", indent=2)
+    # == output_table_d.json ==
+    # [
+    #   {
+    #     "id": 2,
+    #     "name": "quo vero reiciendis velit similique earum",
+    #     "email": "Jayne_Kuhic@sydney.com"
+    #   },
+    #   {
+    #     "id": 3,
+    #     "name": "odio adipisci rerum aut animi",
+    #     "email": "Nikita@garfield.biz"
+    #   }
+    # ]
+
     print("\n<-- petl end")
 
 
