@@ -3,12 +3,11 @@ import requests
 import json
 import datetime
 import oracledb
-
-# from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 
 def main():
-    print("--> petl start\n")
+    print("start: 🚀 petl\n")
 
     # ======================================================================
     # CSV
@@ -224,9 +223,10 @@ def main():
         dsn=f"{ORACLE_HOST}:{ORACLE_PORT}/{ORACLE_SERVICE}",
     )
 
-    table = etl.fromdb(connection, "select * from employee")
-    etl.tocsv(table, "employee.csv")
-    print(table)
+    table_otacle = etl.fromdb(connection, "select * from employee")
+    etl.tocsv(table_otacle, "employee.csv")
+    print(table_otacle)
+
     # +-----+---------+-----------+--------+---------------------+---------------+
     # | ID  | NAME    | JOB_TITLE | SALARY | HIRE_DATE           | DEPARTMENT_ID |
     # +=====+=========+===========+========+=====================+===============+
@@ -241,7 +241,39 @@ def main():
     # | 202 | Eve     | Engineer  |  75000 | 2023-07-07 00:00:00 |            20 |
     # +-----+---------+-----------+--------+---------------------+---------------+
 
-    print("\n<-- petl end")
+    # ----------------------------
+    print("== DBよりデータを取得(sqlalchemy)")
+    connection = (
+        f"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASSWORD}@{ORACLE_HOST}:{ORACLE_PORT}/?service_name={ORACLE_SERVICE}"
+    )
+
+    engine = create_engine(connection)
+
+    try:
+        with engine.connect() as conn:
+            table_otacle_sq = etl.fromdb(conn, text("select * from employee"))
+            # print(table_otacle_sq)
+            print(etl.look(table_otacle_sq))
+    except Exception as e:
+        print(f"An exception occurred. {e}")
+    finally:
+        engine.dispose()
+
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+    # | id  | name      | job_title   | salary | hire_date                             | department_id |
+    # +=====+===========+=============+========+=======================================+===============+
+    # | 101 | 'Alice'   | 'Manager'   |  80000 | datetime.datetime(2020, 1, 1, 0, 0)   |            10 |
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+    # | 102 | 'Bob'     | 'Sales Rep' |  50000 | datetime.datetime(2021, 5, 15, 0, 0)  |            10 |
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+    # | 103 | 'Charlie' | 'Sales Rep' |  52000 | datetime.datetime(2022, 10, 10, 0, 0) |            10 |
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+    # | 201 | 'David'   | 'Engineer'  |  75000 | datetime.datetime(2019, 3, 20, 0, 0)  |            20 |
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+    # | 202 | 'Eve'     | 'Engineer'  |  75000 | datetime.datetime(2023, 7, 7, 0, 0)   |            20 |
+    # +-----+-----------+-------------+--------+---------------------------------------+---------------+
+
+    print("\nend: ✨️ petl")
 
 
 if __name__ == "__main__":
