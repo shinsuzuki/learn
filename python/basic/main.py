@@ -3,6 +3,7 @@ import datetime
 import functools
 import json
 import os
+import re
 
 
 def main():
@@ -96,6 +97,23 @@ def main():
 
     dbinfo = db()
     dbinfo.login()
+
+    # 置換
+    line = "a,b,c"
+    print(line.replace(",", ""))
+
+    # 正規表現を使用
+    print(re.sub(r"\d+", "999", "a123,b123,c123"))
+
+    # maketransを使用
+    table = str.maketrans({"1": "z"})
+    print("a123,b123,c123".translate(table))
+
+    # 記号などをまとめて取り除きたい場合に便利
+    messy_text = "Price: [1,200] yen (tax-in)!"
+    table = str.maketrans("", "", "[]()!")
+    cleaned_text = messy_text.translate(table)
+    print(f"Cleaned symbols: {cleaned_text}")
 
 
 if __name__ == "__main__":
