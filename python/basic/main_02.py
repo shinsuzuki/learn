@@ -4,6 +4,9 @@ import os
 import shutil
 from datetime import datetime, date
 from pathlib import Path
+from typing import NamedTuple
+from dataclasses import dataclass
+from collections import namedtuple
 
 
 def main():
@@ -209,6 +212,52 @@ def main():
     y = copy.deepcopy(x)
     x.remove(3)
     print(f"x={x},y={y}")
+
+    # ----------------------------------------------------------------------
+    # Tupple
+    # ----------------------------------------------------------------------
+    print("--- Tupple ---")
+
+    def tupple_result():
+        return 123, "abc"
+
+    a, b = tupple_result()
+    print(a)
+    print(b)
+
+    print("--- 名前付きTupple (dataclass) ---")
+
+    def func_dataclass():
+        @dataclass
+        class Result:
+            a: int
+            b: int
+
+        return Result(a=1, b=2)
+
+    data = func_dataclass()
+    print(f"data.a: {data.a}/{data.b}")
+
+    print("--- 名前付きTupple (NamedTuple) ---")
+
+    def func_NamedTuple():
+        class Result(NamedTuple):
+            a: int
+            b: int
+
+        return Result(a=1, b=2)
+
+    data = func_NamedTuple()
+    print(f"data.a: {data.a}/{data.b}")
+
+    print("--- 名前付きTupple (namedtuple) ---")
+
+    def func_namedtuple():
+        result = namedtuple("Result", ["a", "b"])
+        return result(a=1, b=2)
+
+    data = func_namedtuple()
+    print(f"data.a: {data.a}/{data.b}")
 
 
 if __name__ == "__main__":
