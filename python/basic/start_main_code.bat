@@ -1,2 +1,4 @@
+@echo off
 set APP_KEY=main_app_key
-python main_02.py
+
+python main_03.py
