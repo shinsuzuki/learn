@@ -1,0 +1,2 @@
+# wslから作業フォルダへ
+cd /mnt/c/Users/shins/mydev/learn/bash
