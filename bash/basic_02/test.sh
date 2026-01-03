@@ -1,8 +1,6 @@
 #!/bin/bash
 echo "--> start"
 
-
-# 変数
 echo "---------------------------------------- 変数"
 name="sato"
 echo $name
@@ -17,7 +15,6 @@ echo "---------------------------------------- printenv start"
 printenv
 echo "---------------------------------------- printenv end"
 
-# 配列
 echo "---------------------------------------- 配列"
 echo "---------- 配列を作成"
 arr1=()
@@ -71,17 +68,61 @@ do
     echo "${key}, ${dic1[key]}"
 done;
 
+echo "---------------------------------------- リダイレクト"
+#  2> : 標準エラー出力をファイルに書き込む（上書き）
+cat missing.txt 2>> error.log
 
-# 制御構造
+# &> : 標準出力と標準エラー出力の両方をファイルに書き込む（Bash固有の簡便記法）。
+cat missing.txt &> error_1_2.log
+
+# 標準出力とファイルに書き込む
+grep "keyword" largefile.log 2>&1  grep_output.txt | tee -a error_1_2_2.log
+
+echo "---------------------------------------- パイプ"
+grep "missing" error.log | wc -l
 
 
+echo "---------------------------------------- 日付"
+date "+%Y-%m-%d" # 2026-01-04
+
+echo "---------------------------------------- 制御"
+# if(比較用、bash拡張)
+num=11
+if [[ "$num" -gt 10 ]]; then
+    echo "10 以上"
+fi
+
+if [[ "$num" -gt 20 ]] ; then
+    echo "20 以上"
+else
+    echo "20 以下"
+fi
+
+# case(パターンマッチング用)
+ans=10
+case $ans in
+    10)
+        echo "ans=10"
+        ;;
+    20)
+        echo "ans=20"
+        ;;
+    *)
+        echo ans=その他
+        ;;
+esac
 
 
+# for
+for i in "a" "b" "c"
+do
+    echo $i
+done;
 
-
-# コマンドとの連携
-
-
+for ((i=0;i<3;i++));
+do
+    echo $i
+done;
 
 
 echo "<-- end"
