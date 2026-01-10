@@ -1,0 +1,15 @@
+cffi==2.0.0
+cryptography==46.0.3
+et_xmlfile==2.0.0
+greenlet==3.3.0
+numpy==2.3.5
+openpyxl==3.1.5
+oracledb==3.4.1
+pandas==2.3.3
+pycparser==2.23
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+SQLAlchemy==2.0.45
+typing_extensions==4.15.0
+tzdata==2025.2

@@ -1,0 +1,6 @@
+id,date,service_name,provider,duration_min,cost_out_of_pocket
+1,2026-01-05,訪問介護,Niigata-Helper-Center,60,1200
+2,2026-01-07,デイサービス,Sunset-Care-Garden,480,1500
+3,2026-01-10,訪問リハビリ,Local-Clinic,40,800
+4,2026-01-12,訪問介護,Niigata-Helper-Center,60,1200
+5,2026-01-14,福祉用具レンタル,Care-Support-Shop,0,3000
