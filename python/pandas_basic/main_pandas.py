@@ -32,21 +32,23 @@ def main():
 
     # 内包表記でDFのリストを作成（メモリ効率が良い）
     # df_list = [pd.read_excel(f) for f in files]
-    # df_list = [pd.read_excel(f, engine="calamine") for f in files]
+    df_list = [pd.read_excel(f, engine="calamine") for f in files]
 
     # 遅い処理で試す
-    df_list = pd.DataFrame()
-    for file in files:
-        df_temp = pd.read_excel(file)
-        df_list = pd.concat([df_list, df_temp])  # 毎回コピーが発生
+    # df_list = pd.DataFrame()
+    # for file in files:
+    #     print(f"{file}")
+    #     df_temp = pd.read_excel(file)
+    #     df_list = pd.concat([df_list, df_temp])  # 毎回コピーが発生
 
     # 最後に一度だけ縦に結合
-    # df_combined = pd.concat(df_list, axis=0, ignore_index=True)
+    df_combined = pd.concat(df_list, axis=0, ignore_index=True)
     # df 縦結合: 2.0660922527313232 << normal
     # df 縦結合: 0.9016640186309814 << calamine
     # print(df_combined)
 
-    print(df_list)
+    # print(df_list)
+    # df_list.to_excel("./data/xls/output_all.xlsx", index=False)
 
     print(f"df 縦結合: {time.time() - start_time}")
 
