@@ -1,10 +1,54 @@
+import glob
 import pickle
 import pandas as pd
+import time
 from person import Person
 
 
 def main():
     print("> start main_pandas")
+
+    # ---------- xlsx読込速度 ----------
+    print("\n============ xlsx読込速度 ============")
+    start_time = time.time()
+    # pd.read_excel("./data/50mb.xlsx")
+    pd.read_excel("./data/SampleDocs-SampleXLSFile_6800kb.xls")
+    print(f"read xlsx normal: {time.time() - start_time}")
+    # read xlsx normal: 12.610586404800415 << 50MBで12秒
+
+    start_time = time.time()
+    pd.read_excel("./data/SampleDocs-SampleXLSFile_6800kb.xls", engine="calamine")
+    # pd.read_excel("./data/50mb.xlsx", engine="calamine")
+    print(f"read xlsx calamine: {time.time() - start_time}")
+    # engine="calamine"に変えた場合、半分程度の時間で対応している
+    # read xlsx calamine: 5.16440486907959 << 50MBで5秒
+
+    # ---------- df 縦結合 ----------
+    print("\n============ df 縦結合 ============")
+    start_time = time.time()
+
+    # ファイルパスのリストを取得（例：dataフォルダ内の全てのcsv）
+    files = glob.glob("data/xls/*.xls")
+
+    # 内包表記でDFのリストを作成（メモリ効率が良い）
+    # df_list = [pd.read_excel(f) for f in files]
+    # df_list = [pd.read_excel(f, engine="calamine") for f in files]
+
+    # 遅い処理で試す
+    df_list = pd.DataFrame()
+    for file in files:
+        df_temp = pd.read_excel(file)
+        df_list = pd.concat([df_list, df_temp])  # 毎回コピーが発生
+
+    # 最後に一度だけ縦に結合
+    # df_combined = pd.concat(df_list, axis=0, ignore_index=True)
+    # df 縦結合: 2.0660922527313232 << normal
+    # df 縦結合: 0.9016640186309814 << calamine
+    # print(df_combined)
+
+    print(df_list)
+
+    print(f"df 縦結合: {time.time() - start_time}")
 
     # ---------- class pickle ----------
     print("\n============ pickle (class) ============")
