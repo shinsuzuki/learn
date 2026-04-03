@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    volumes:
+      # ホストの現在のディレクトリ(.)を、コンテナの/appに同期
+      - .:/app
+    # コンテナがすぐに終了しないようにする設定
+    tty: true
+    stdin_open: true
+    # 実行コマンド（例：メインのスクリプトを実行し続ける場合）
+    # command: python main.py
