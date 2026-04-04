@@ -1,0 +1,35 @@
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は D69A-74F2 です
+C:.
+|   dir-list.txt
+|   filename.txt
+|   treedata.txt
+|   
++---cmd_tmp
+|   |   myfile.txt
+|   |   
+|   +---a
+|   +---b
+|   +---o
+|   \---z
++---findstr
+|       hoge.bat
+|       
++---mkdir_if_exists
+|   |   if-exist-dir.bat
+|   |   
+|   \---test-dir
++---sub-routine
+|       hoge.bat
+|       strA
+|       strB
+|       
++---touch-like
+|       touch-file
+|       touch-like.bat
+|       
+\---_dosctl
+    |   hoge.bat
+    |   other.bat
+    |   
+    \---dir_a
