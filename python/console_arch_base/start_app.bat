@@ -4,6 +4,6 @@ call .venv\Scripts\activate.bat
 @REM srcフォルダを検索パスに追加する
 set PYTHONPATH=%PYTHONPATH%;src
 
-@REM appを起動
-uvicorn app.main:app --port 8092
+@REM app.mainをモジュールとして実行
+python -m app.main
 
