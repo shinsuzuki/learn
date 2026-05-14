@@ -1,0 +1,142 @@
+.note-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.note-card-link:hover {
+  text-decoration: none;
+}
+
+.note-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  height: 200px;
+}
+
+.note-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.note-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl), 0 0 30px rgba(99, 102, 241, 0.15);
+  border-color: var(--color-border-hover);
+}
+
+.note-card:hover::before {
+  opacity: 0.05;
+}
+
+.note-card__content {
+  flex: 1;
+}
+
+.note-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.note-card__body {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap;
+  font-weight: 400;
+  min-height: 3.04rem;
+}
+
+.note-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.note-card__date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.note-card__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.note-card__delete {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  padding: 8px;
+  border-radius: var(--radius-md);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.note-card__delete:hover {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  border-color: var(--color-error);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.note-card__icon {
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease;
+}
+
+.note-card__icon {
+  color: var(--color-text-muted);
+}
+
+.note-card__icon {
+  color: white;
+}
+
+.note-card__delete .note-card__icon {
+  color: var(--color-text-muted);
+}
+
+.note-card__delete:hover .note-card__icon {
+  color: white;
+}

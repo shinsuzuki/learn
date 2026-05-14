@@ -1,0 +1,47 @@
+.flash-message {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  width: auto;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1002;
+}
+
+.flash-message__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.flash-message__text {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Success message styling (default) */
+.flash-message--success {
+  background-color: var(--color-success-bg);
+  border-color: var(--color-success);
+}
+
+.flash-message--success .flash-message__icon {
+  color: var(--color-success);
+}
+
+/* Error message styling */
+.flash-message--error {
+  background-color: #dc2626;
+  border-color: #ef4444;
+}
+
+.flash-message--error .flash-message__icon {
+  color: #ef4444;
+}
