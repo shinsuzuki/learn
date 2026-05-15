@@ -8,3 +8,12 @@ GET {{api_host}}/items/999
 
 ###
 GET {{api_host}}/models/resnet
+
+
+###-------------------- クエリーパラメータ
+GET {{api_host}}/items?skip=1&limit=3
+
+###
+GET {{api_host}}/items_q_options/abc?q=xyz
+###
+GET {{api_host}}/items_q_options/abc

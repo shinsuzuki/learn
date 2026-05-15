@@ -15,6 +15,7 @@ def read_root():
     return {"Hello": "World"}
 
 
+# ---------------------------------------- パスパラメータ
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str | None = None):
     return {"item_id": item_id, "q": q}
@@ -34,3 +35,18 @@ def get_model(model_name: ModelName):
         return {"model_name": model_name, "message": "LeCNN all the images"}
 
     return {"model_name": model_name, "message": "Have some residuals"}
+
+
+# ---------------------------------------- クエリーパラメータ
+@app.get("/items/")
+def read_items(skip: int = 0, limit: int = 10):
+    fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
+    return fake_items_db[skip : skip + limit]
+
+
+@app.get("/items_q_options/{item_id}")
+def read_items_q_options(item_id: str, q: str | None = None):
+    if q:
+        return {"item_id": item_id, "q": q}
+
+    return {"item_id": item_id}
