@@ -1,0 +1,10 @@
+@api_host = http://localhost:8092
+
+### root
+GET {{api_host}}
+
+###-------------------- パスパラメータ
+GET {{api_host}}/items/999
+
+###
+GET {{api_host}}/models/resnet
