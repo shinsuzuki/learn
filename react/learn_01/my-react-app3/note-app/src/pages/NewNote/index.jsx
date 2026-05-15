@@ -22,10 +22,10 @@ function NewNote() {
     // navigate("/")
     // setSaving(false)
 
-    setSaving(true)
 
     try {
-      console.log(hoge)
+      setSaving(true)
+      //console.log(hoge)
       notesAPI.create({ title, content })
       showNotification("success", "メモを作成しました")
       navigate("/")

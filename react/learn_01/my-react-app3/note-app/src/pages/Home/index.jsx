@@ -6,27 +6,40 @@ import { Search, ShowerHeadIcon } from 'lucide-react';
 import Spinner from '../../components/Spinner/index';
 import { notesAPI } from "../../lib/api";
 import { useNotification } from "../../contexts/NotificationContext";
-
+import { useSearchParams } from "react-router-dom";
 
 function Home() {
   const [notes, setNotes] = useState([])
+  const [totalPages, setTotalPages] = useState(0)
+  const [searchParams, setSearchParams] = useSearchParams()
   const [loading, setLoading] = useState(true)
   const { showNotification } = useNotification()
 
+  const currentPage = parseInt(searchParams.get('page') || 1, 10)
+  console.log(`currentPage: ${currentPage}`)
+
+  const keyword = searchParams.get('search') || ''
+  console.log(`search: ${keyword}`)
+
+  const [inputValue, setInputValue] = useState(keyword)
+
+  const handleSearch = () => {
+    setSearchParams({ page: 1, search: inputValue.trim() })
+  }
 
   const fetchNotes = async () => {
-    setLoading(true)
     try {
-      const data = await notesAPI.getAll()
+      setLoading(true)
+      const data = await notesAPI.getAll({ page: currentPage, search: keyword })
       console.log(data)
       setNotes(data.notes)
+      setTotalPages(data.pagination.totalPages)
     } catch (error) {
       console.log("メモの取得に失敗しました", error)
       showNotification('error', "メモの取得に失敗しました")
     } finally {
       setLoading(false)
     }
-
   }
 
   const getContents = () => {
@@ -34,6 +47,14 @@ function Home() {
       return (
         <div className="home__notes home__notes--loading">
           <Spinner />
+        </div>
+      )
+    }
+
+    if (notes.length === 0) {
+      return (
+        <div className="home__notes home__notes--loading">
+          <p>メモがありません。</p>
         </div>
       )
     }
@@ -60,9 +81,13 @@ function Home() {
     )
   }
 
+  const moveToPage = (page) => {
+    setSearchParams({ page: page.toString() })
+  }
+
   useEffect(() => {
     fetchNotes()
-  }, [])
+  }, [currentPage, keyword])
 
   return (
     <div className="home">
@@ -73,14 +98,16 @@ function Home() {
             type="text"
             placeholder="メモを検索..."
             className="home__search-field"
+            value={ inputValue }
+            onChange={ (e) => setInputValue(e.target.value) }
           />
-          <button className="home__search-btn">
+          <button className="home__search-btn" onClick={ handleSearch }>
             検索
           </button>
         </div>
       </div>
       { getContents() }
-      <Pagination />
+      <Pagination currentPage={ currentPage } onPageChange={ moveToPage } totalPage={ totalPages } />
     </div>
   );
 }

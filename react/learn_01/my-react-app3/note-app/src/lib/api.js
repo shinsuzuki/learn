@@ -15,10 +15,19 @@ const apiFetch = async (url, options) => {
 }
 
 export const notesAPI = {
-  async getAll() {
-    const result = await apiFetch('notes', {
-      method: 'GET'
-    })
+  async getAll(params) {
+
+    // const result = await apiFetch('notes', {
+    //   method: 'GET'
+    // })
+
+    let url = "notes"
+    if (params && Object.keys(params).length > 0) {
+      const searchParams = new URLSearchParams(params)
+      url = url + `?${searchParams.toString()}`
+    }
+
+    const result = await apiFetch(url, { method: 'GET' })
 
     if (!result.ok) {
       throw new Error(`メモ一覧の取得に失敗しました: ${result.status}`)

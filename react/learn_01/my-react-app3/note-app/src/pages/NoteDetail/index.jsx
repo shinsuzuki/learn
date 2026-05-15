@@ -45,8 +45,8 @@ function NoteDetail() {
   }
 
   const updateNote = async () => {
-    setSaving(true)
     try {
+      setSaving(true)
       await notesAPI.update(id, { title, content })
       showNotification('success', 'メモを更新しました')
       navigate('/')
