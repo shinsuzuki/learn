@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from enum import StrEnum
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -50,3 +51,22 @@ def read_items_q_options(item_id: str, q: str | None = None):
         return {"item_id": item_id, "q": q}
 
     return {"item_id": item_id}
+
+
+# ---------------------------------------- リクエストボディ
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
+
+
+@app.post("/items/")
+def create_item(item: Item):
+    return item
+
+
+# パスクエリー、ボディを取得
+@app.post("/items/{item_id}")
+def create_item2(item_id: str, q: str, item: Item):
+    return {"item_id": item_id, "q": q, **item.model_dump()}

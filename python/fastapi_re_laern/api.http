@@ -17,3 +17,28 @@ GET {{api_host}}/items?skip=1&limit=3
 GET {{api_host}}/items_q_options/abc?q=xyz
 ###
 GET {{api_host}}/items_q_options/abc
+
+
+###-------------------- リクエストボディ
+POST {{api_host}}/items/
+content-type: application/json
+
+{
+    "name": "Foo",
+    "description": "An optional description",
+    "price": 45.2,
+    "tax": 3.5
+}
+
+###
+POST {{api_host}}/items/abc?q=xyz
+content-type: application/json
+
+{
+    "name": "Foo",
+    "description": "An optional description",
+    "price": 45.2,
+    "tax": 3.5
+}
+
+

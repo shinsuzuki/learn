@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "name": "update_name",
+      "email": "update_email",
+      "id": "1"
+    }
+  ],
+  "props": [
+    {
+      "id": "1",
+      "title": "初めての投稿",
+      "body": "これが最初の投稿です。"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
