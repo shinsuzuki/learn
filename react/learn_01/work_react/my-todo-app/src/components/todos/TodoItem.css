@@ -1,0 +1,118 @@
+/* Todo項目のスタイル */
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.todo-item:hover {
+  background-color: #f9fafb;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+/* コンテンツ部分 */
+.todo-item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+/* チェックボックス */
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+/* 詳細部分 */
+.todo-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* タイトル */
+.todo-title {
+  font-size: 18px;
+  color: #1f2937;
+  transition: text-decoration 0.2s ease;
+  font-weight: 500;
+}
+
+.todo-title.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* メタ情報（優先度と期日） */
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+/* 優先度バッジ */
+.priority-badge {
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.priority-low {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.priority-medium {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.priority-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* 期日 */
+.due-date {
+  color: #6b7280;
+}
+
+/* アクション部分 */
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* アクションボタン */
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+}
+
+.edit-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.delete-btn:hover {
+  background-color: #fee2e2;
+}

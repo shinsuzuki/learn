@@ -1,0 +1,19 @@
+/* 編集ページのスタイル */
+.todo-edit-page {
+  width: 100%;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.error-message {
+  color: #ef4444;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
