@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUI レイアウト実験室</title>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/@mui/material@5.15.0/umd/material-ui.development.js" crossorigin></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // レイアウト用の主要コンポーネントをusing
+    const { Container, Grid, Stack, Paper, Typography, Box, Button } = MaterialUI;
+
+    function App() {
+      return (
+        <Box sx={{ bgcolor: '#e0e0e0', minHeight: '100vh', py: 4 }}>
+
+          {/* 1. Container: 画面の中央に程よい幅でコンテンツを収める（座布団の外枠） */}
+          <Container maxWidth="lg">
+
+            <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4, textAlign: 'center', fontWeight: 'bold' }}>
+              MUI レイアウト（Grid & Stack）の実験
+            </Typography>
+
+            {/* 2. Grid (親): 画面を12分割のグリッドとして扱う（C#のGridコントロールのイメージ）
+                            spacing={3} はアイテム間の隙間（マージン） */}
+            <Grid container spacing={3}>
+
+              {/* Grid (子): xs={12} md={8} と書くことで、
+                               「スマホ(xs)では12枠全部使う＝1列」「PC(md)では8枠使う＝全体の2/3の幅」になる */}
+              <Grid item xs={12} md={8}>
+                <Paper sx={{ p: 3, height: '100%', bgcolor: 'white' }} elevation={2}>
+                  <Typography variant="h6" color="primary" gutterBottom>
+                    メインコンテンツ領域 (md={8})
+                  </Typography>
+                  <Typography variant="body1">
+                    ブラウザの横幅を縮めてみてください。この白いエリアと右側のサイドバーが、スマホサイズになると自動で縦一列に綺麗に並び替わります。CSSのメディアクエリを一切書かずにレスポンシブ対応が可能です。
+                  </Typography>
+                </Paper>
+              </Grid>
+
+              {/* Grid (子): PC(md)では4枠使う＝全体の1/3の幅 */}
+              <Grid item xs={12} md={4}>
+                <Paper sx={{ p: 3, height: '100%', bgcolor: '#fffde7' }} elevation={2}>
+                  <Typography variant="h6" color="secondary" gutterBottom>
+                    サイドバー (md={4})
+                  </Typography>
+
+                  {/* 3. Stack: 要素を一方向に「ただ並べる」ツール（C#のStackPanel）
+                                        spacing={2} でボタン同士の隙間を自動調整 */}
+                  <Stack direction="column" spacing={2} sx={{ mt: 2 }}>
+                    <Button variant="contained">アクション 1</Button>
+                    <Button variant="outlined">アクション 2</Button>
+                    <Button variant="text">キャンセル</Button>
+                  </Stack>
+                </Paper>
+              </Grid>
+
+              {/* 下段：3つの同じ幅のカードを並べるパターン（12 / 3 = 4 なので md={4}） */}
+              <Grid item xs={12} sm={4}>
+                <Paper sx={{ p: 2, textAlign: 'center' }} elevation={1}>
+                  <Typography variant="subtitle1">カード A (md={4})</Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Paper sx={{ p: 2, textAlign: 'center' }} elevation={1}>
+                  <Typography variant="subtitle1">カード B (md={4})</Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Paper sx={{ p: 2, textAlign: 'center' }} elevation={1}>
+                  <Typography variant="subtitle1">カード C (md={4})</Typography>
+                </Paper>
+              </Grid>
+
+            </Grid>
+
+          </Container>
+        </Box>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+
+</html>
