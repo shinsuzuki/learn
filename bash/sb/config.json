@@ -1,0 +1,17 @@
+{
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "dbname": "mydatabase"
+  },
+  "server": {
+    "port": 8080,
+    "timeout": 3000
+  },
+  "logging": {
+    "level": "info",
+    "file": "/var/log/app.log"
+  }
+}

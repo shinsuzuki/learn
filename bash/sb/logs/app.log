@@ -1,0 +1,11 @@
+2026-06-14T19:15:00+09:00 [INFO] [etl_data_pump.sh] バッチジョブ (ID: JOB_20260614_001) を開始します。
+2026-06-14T19:15:01+09:00 [INFO] [etl_data_pump.sh] データベース (PostgreSQL) への接続に成功しました。
+2026-06-14T19:15:02+09:00 [INFO] [etl_data_pump.sh] 前日分のトランザクションデータの抽出 (Extract) を開始します。
+2026-06-14T19:15:05+09:00 [INFO] [etl_data_pump.sh] 抽出データをステージング領域 (./data/staging/) に保存しました。
+2026-06-14T19:15:06+09:00 [INFO] [etl_data_pump.sh] データ変換 (Transform) フェーズへ移行します。
+2026-06-14T19:15:06+09:00 [INFO] [etl_data_pump.sh] 依存コマンドのチェック中: command -v jq ... OK.
+2026-06-14T19:15:07+09:00 [INFO] [etl_data_pump.sh] 入力対象のログファイル一覧を取得しました。件数: 3件
+2026-06-14T19:15:07+09:00 [INFO] [etl_data_pump.sh] ループ処理を開始します: for f in *.log ...
+2026-06-14T19:15:08+09:00 [ERROR] [etl_data_pump.sh:L54] [ERR_FILE_NOT_FOUND] access2.log が存在しません。
+2026-06-14T19:15:08+09:00 [FATAL] [etl_data_pump.sh:L56] [SYS_ABORT] 必須ファイル欠落のため処理を継続できません。ステータスコード 1 で異常終了します。
+2026-06-14T19:15:08+09:00 [ERROR] [etl_data_pump.sh:L54] [404 ERROR] 。
