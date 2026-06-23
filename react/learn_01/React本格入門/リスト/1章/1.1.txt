@@ -1,0 +1,4 @@
+// 命令的：昔ながらのDOM操作
+const el = document.createElement("h1");    // 要素を作る
+el.textContent = "Hello World";             // テキストを設定
+document.body.appendChild(el);              // DOMに追加

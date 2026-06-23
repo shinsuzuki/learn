@@ -1,0 +1,31 @@
+import { BrowserRouter } from "react-router-dom";
+import AppLayout from "./components/layout/AppLayout";
+import TodoForm from "./components/todos/TodoForm";
+import "./App.css";
+
+function App() {
+    const handleSubmit = (values) => {
+        console.log("送信されたデータ:", values);
+        alert("フォームが送信されました！コンソールを確認してください。");
+    };
+
+    return (
+        <BrowserRouter>
+            <AppLayout>
+                <h2>TodoFormのテスト</h2>
+                <TodoForm
+                  initialValues={{
+                    title: "",
+                    detail: "",
+                    priority: "medium",
+                    dueDate: ""
+                }}
+                onSubmit={handleSubmit}
+                submitText="テスト送信"
+                />
+            </AppLayout>
+        </BrowserRouter>
+    );
+}
+
+export default App;

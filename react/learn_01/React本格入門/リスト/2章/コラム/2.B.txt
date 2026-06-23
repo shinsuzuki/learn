@@ -1,0 +1,4 @@
+import { greet , farewell } from "./utils.js"; 
+
+greet();		// Hello! 
+farewell(); 	// Goodbye!

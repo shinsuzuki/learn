@@ -1,0 +1,31 @@
+import UserTable from "../components/UserTable";
+import UserCount from "../components/UserCount";
+
+function UserList() {
+    // 全体の枠や背景のスタイル
+    const containerStyle = {
+        border: "2px solid #222",     // 太めの枠線
+        borderRadius: "10px",           // 角を丸く
+        width: "400px",                 // 横幅を400pxに
+        margin: "40px auto",            // 上下40px、左右中央寄せ
+        padding: "24px",                // 内側に余白
+        background: "#fff"            // 背景を白に
+    };
+
+    // タイトルのスタイル
+    const titleStyle = {
+        textAlign: "center",            // 中央寄せ
+        fontSize: "22px",               // 少し大きめの文字
+        marginBottom: "20px"            // 下に余白
+    };
+
+    return (
+        <div style={containerStyle}>
+            <div style={titleStyle}>ユーザー一覧</div>
+            <UserTable />
+            <UserCount />
+        </div>
+    );
+}
+
+export default UserList;

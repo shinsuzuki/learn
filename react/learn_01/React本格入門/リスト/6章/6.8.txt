@@ -1,0 +1,21 @@
+import Parent from './components/ContextSample/Parent';
+import UserContext from './components/ContextSample/UserContext';
+import "./App.css";
+
+function App() {
+  const data = {
+    name: "太郎",
+    age: 20,
+    hobby: "サッカー"
+  };
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <UserContext.Provider value={data}>
+      <h1>Context APIの例</h1>
+      <Parent />
+    </UserContext.Provider>
+  );
+}
+
+export default App;

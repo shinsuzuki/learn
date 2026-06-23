@@ -1,0 +1,22 @@
+import UserRow from "./UserRow";
+
+function UserTable(props) {
+・・・既存コード・・・
+  // ユーザーデータの配列：コメントアウトしてpropsから受け取るように変更
+  // const users = [
+  //   { id: 1, name: "山田太郎", age: 33 },
+  //   { id: 2, name: "佐藤花子", age: 28 }
+  // ];
+
+  return (
+    <table style={tableStyle}>
+      <thead>
+        <tr>
+          <th style={thStyle}>ID</th>
+          <th style={thStyle}>名前</th>
+          <th style={thStyle}>年齢</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.users.map((user) => (
+・・・既存コード・・・

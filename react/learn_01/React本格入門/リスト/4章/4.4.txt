@@ -1,0 +1,10 @@
+// ①分割代入で受け取る
+function CounterApp({ count, onIncrement }) {
+    // propsで受け取るのでコメントアウト
+    // const [count, setCount] = useState(0);
+
+    const handleClick = () => {
+        // ②ボタンがクリックされたときにカウントを1増やす
+        onIncrement();
+    };
+・・・既存コード・・・

@@ -1,0 +1,23 @@
+/* Todo リストのスタイル */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 空状態のスタイル */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-message {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.empty-sub {
+  font-size: 14px;
+  color: #9ca3af;
+}

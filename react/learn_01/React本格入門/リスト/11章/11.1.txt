@@ -1,0 +1,9 @@
+{
+  "users": [
+    { "id": 1, "name": "太郎", "email": "taro@example.com" },
+    { "id": 2, "name": "花子", "email": "hanako@example.com" }
+  ],
+  "posts": [
+    { "id": 1, "title": "はじめての投稿", "body": "こんにちは！" }
+  ]
+}

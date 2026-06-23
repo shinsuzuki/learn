@@ -1,0 +1,2 @@
+// JSONへ変換
+const data = await res.json();　　// ← 手動で変換が必要

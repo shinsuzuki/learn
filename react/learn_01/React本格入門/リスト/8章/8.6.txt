@@ -1,0 +1,13 @@
+import ReactHookFormSample from "./components/ValidationSample/ReactHookFormSample";
+import "./App.css";
+
+function App() {
+  return (
+    <>
+      <h2>ReactHookFormの例</h2>
+      <ReactHookFormSample />
+    </>
+  );
+}
+
+export default App;

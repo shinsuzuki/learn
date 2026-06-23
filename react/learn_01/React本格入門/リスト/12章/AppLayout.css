@@ -1,0 +1,125 @@
+/* ヘッダー部分のスタイル */
+.app-header {
+  background-color: #09d490ff;
+  color: white;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダー内の要素を中央に集める */
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* タブレット幅では余白と文字を少し縮小 */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 12px 15px;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-nav {
+    gap: 8px;
+  }
+
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* スマホ幅では縦並びにして間隔を確保 */
+@media (max-width: 480px) {
+  .header-content {
+    padding: 10px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-title {
+    font-size: 18px;
+  }
+}
+
+/* サイトタイトルのサイズと太さ */
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* ナビゲーションリンクを横並びに配置 */
+.header-nav {
+  display: flex;
+  gap: 16px;
+}
+
+/* ナビ個々のボタン風スタイル */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+/* ナビにマウスを乗せたときの薄いハイライト */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* メインコンテンツ部分のスタイル */
+.main-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 32px 20px;
+  overflow-x: hidden;
+}
+
+/* 実際のTodo画面の枠を白いカードに */
+.content-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: left; /* 文字を左寄せにする */
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 16px 10px;
+  }
+
+  .content-wrapper {
+    padding: 20px;
+    border-radius: 0;
+    min-height: calc(100vh - 140px);
+  }
+}
+
+/* スマホ幅ではさらに余白を減らして見やすく */
+@media (max-width: 480px) {
+  .main-container {
+    padding: 8px 5px;
+  }
+
+  .content-wrapper {
+    padding: 16px;
+  }
+}

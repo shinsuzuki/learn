@@ -1,0 +1,33 @@
+// ブラウザのデフォルトCSSをリセットするコンポーネント
+import CssBaseline from '@mui/material/CssBaseline';
+// レイアウト用のコンテナコンポーネント
+import Container from '@mui/material/Container';
+// テキスト表示用のコンポーネント
+import Typography from '@mui/material/Typography';
+// レイアウト調整用のBoxコンポーネント
+import Box from '@mui/material/Box';
+import ButtonExample from './components/MUISample/ButtonExample';
+
+function App() {
+  return (
+    <>
+      {/* ブラウザのデフォルトスタイルをリセット */}
+      <CssBaseline />
+      {/* 画面幅を制限するコンテナ（最大幅: lg） */}
+      <Container maxWidth="lg">
+        {/* マージン調整用のBox（上下に4の余白） */}
+        <Box sx={{ my: 4 }}>
+          <Typography variant="h3" component="h1" gutterBottom align="center">
+            Material-UI 入門
+          </Typography>
+          <Typography variant="h6" component="p" align="center">
+            MUIを使ってプロっぽいデザインに挑戦しよう！
+          </Typography>
+          <ButtonExample />
+        </Box>
+      </Container>
+    </>
+  );
+}
+
+export default App;

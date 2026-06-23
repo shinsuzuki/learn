@@ -1,0 +1,22 @@
+import "./App.css";
+
+function App() {
+  // JavaScriptのイベント処理関数（クリックされたときにアラートを出す）
+  const handleClick = () => {
+    alert("クリックされました！");
+  };
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <div>
+      {/* JSX内のコメント：見出しを表示 */}
+      <h1 style={{ color: 'red' }}>ハロー　JSX！</h1>
+
+      {/* JSX内のコメント：ボタンを押すと関数が呼ばれる */}
+      <button onClick={handleClick}>
+        クリックしてね
+      </button>
+    </div>
+  );
+}
+export default App;

@@ -1,0 +1,36 @@
+import UserRow from "./UserRow";
+
+function UserTable() {
+    // テーブル全体のスタイル
+    const tableStyle = {
+        borderCollapse: "collapse", // セルの境界線
+        width: "100%",              // テーブルの横幅を100%
+        margin: "auto"              // テーブルを中央に配置
+    };
+
+    // ヘッダー行（見出しセル）のスタイル
+    const thStyle = {
+        border: "1px solid #222",   // 枠線をつける
+        padding: "8px",             // セルの内側に余白をつける
+        background: "#c8e6c9"       // ヘッダーの背景色を薄い緑色
+    };
+
+    return (
+        <table style={tableStyle}>
+            <thead>
+                <tr>
+                    <th style={thStyle}>ID</th>
+                    <th style={thStyle}>名前</th>
+                    <th style={thStyle}>年齢</th>
+                </tr>
+            </thead>
+            <tbody>
+                <UserRow />
+                <UserRow />
+                <UserRow />
+            </tbody>
+        </table>
+    );
+}
+
+export default UserTable;

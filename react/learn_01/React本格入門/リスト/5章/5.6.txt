@@ -1,0 +1,13 @@
+import NameWatcher from "./components/EffectSample/NameWatcher";
+import "./App.css";
+
+function App() {
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <>
+      <NameWatcher />
+    </>
+  );
+}
+export default App;

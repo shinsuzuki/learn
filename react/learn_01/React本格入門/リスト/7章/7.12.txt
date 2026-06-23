@@ -1,0 +1,23 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Article from "./components/RouterSample/Article";
+import "./App.css";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <h1>React Routerの例</h1>
+      <Link to="/articles/life/1">🌱 生活記事 ID:1</Link>
+      <br />
+      <Link to="/articles/life/2">🌱 生活記事 ID:2</Link>
+      <br />
+      <Link to="/articles/news/3">📰 ニュース記事 ID:3</Link>
+      <hr />
+      <Routes>
+        {/* :category と :id の2つのパラメータを指定 */}
+        <Route path="/articles/:category/:id" element={<Article />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;

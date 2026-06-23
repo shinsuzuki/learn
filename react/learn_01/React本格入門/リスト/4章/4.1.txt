@@ -1,0 +1,13 @@
+import CounterApp from '../components/CounterApp';
+
+function TotalDisplay() {
+    return (
+        <div>
+            <h2>合計カウント: ???</h2>
+            <CounterApp />
+            <CounterApp />
+        </div>
+    );
+}
+
+export default TotalDisplay;

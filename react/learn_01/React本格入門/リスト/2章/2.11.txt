@@ -1,0 +1,13 @@
+import UserList from "./pages/UserList";
+import "./App.css";
+
+function App() {
+
+  // JSXでのUI返却部分（画面に表示する内容）
+  return (
+    <>
+      <UserList />
+    </>
+  );
+}
+export default App;

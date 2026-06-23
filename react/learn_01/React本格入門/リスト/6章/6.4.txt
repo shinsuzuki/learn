@@ -1,0 +1,20 @@
+import Parent from './components/PropsDrillingSample/Parent';
+import "./App.css";
+
+function App() {
+  // propsで渡すデータ
+  const data = {
+    name: "太郎",
+    age: 20,
+    hobby: "サッカー"
+  };
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <>
+      <h1>プロップスドリリングの例</h1>
+      <Parent user={data} />
+    </>
+  );
+}
+export default App;

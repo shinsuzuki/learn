@@ -1,0 +1,13 @@
+import ValidationForm from "./components/ValidationSample/ValidationForm";
+import "./App.css";
+
+function App() {
+  return (
+    <>
+      <h2>バリデーションフォームの例</h2>
+      <ValidationForm />
+    </>
+  );
+}
+
+export default App;

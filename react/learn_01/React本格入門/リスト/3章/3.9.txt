@@ -1,0 +1,5 @@
+    <tr>
+      <td style={cellStyle}>{props.id}</td>
+      <td style={cellStyle}>{props.name}</td>
+      <td style={cellStyle}>{props.age}</td>
+    </tr>

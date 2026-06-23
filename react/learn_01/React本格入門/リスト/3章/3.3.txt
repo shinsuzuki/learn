@@ -1,0 +1,10 @@
+import UserRow from "./UserRow";
+
+function UserTable() {
+・・・既存コード・・・
+      <tbody>
+        <UserRow />
+        <UserRow />
+        <UserRow />
+      </tbody>
+・・・既存コード・・・

@@ -1,0 +1,6 @@
+const names = ["山田", "佐藤", "鈴木"];
+
+// アロー関数でmapを使って「さん」付け
+const namesWithSan = names.map(name => name + "さん");
+
+console.log(namesWithSan);  // ["山田さん", "佐藤さん", "鈴木さん"]

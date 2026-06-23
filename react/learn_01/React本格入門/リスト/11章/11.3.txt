@@ -1,0 +1,10 @@
+fetch('http://localhost:3001/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json' // ← 毎回書く必要あり
+    },
+    body: JSON.stringify({
+        name: '次郎',
+        email: 'jirou@example.com'
+    })
+})

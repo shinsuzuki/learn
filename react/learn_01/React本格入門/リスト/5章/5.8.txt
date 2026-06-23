@@ -1,0 +1,22 @@
+import { useState } from 'react';
+import TimerComponent from './components/EffectSample/TimerComponent';
+import "./App.css";
+
+function App() {
+  // タイマーの表示切替
+  const [showTimer, setShowTimer] = useState(true);
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <>
+      <h1>useEffectのクリーンアップ例</h1>
+      <button onClick={() => setShowTimer(!showTimer)}>
+        {showTimer ? 'タイマーを止める' : 'タイマーを再開する'}
+      </button>
+
+      {/* タイマーの表示・非表示 */}
+      {showTimer && <TimerComponent /> }
+    </>
+  );
+}
+export default App;

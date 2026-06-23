@@ -1,0 +1,16 @@
+import { BrowserRouter } from "react-router-dom";
+import AppLayout from "./components/layout/AppLayout";
+import './App.css'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout>
+        <h2>AppLayoutのテスト</h2>
+        <p>ヘッダーとナビゲーションが表示されていればOK！</p>
+      </AppLayout>
+    </BrowserRouter>
+  );
+}
+
+export default App;

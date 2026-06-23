@@ -1,0 +1,43 @@
+import { useState } from "react";
+import ConfirmDialog from "./components/common/ConfirmDialog";
+import "./App.css";
+
+export default function App() {
+  // ダイアログの開閉を管理
+  const [open, setOpen] = useState(false);
+
+  // 「削除ボタン」を押したときにダイアログを開く
+  const handleOpen = () => setOpen(true);
+
+  // 「削除」ボタンが押されたときの処理
+  const handleConfirm = () => {
+    alert("削除しました！");
+    setOpen(false);
+  };
+
+  // 「キャンセル」ボタンが押されたときの処理
+  const handleCancel = () => {
+    alert("キャンセルしました。");
+    setOpen(false);
+  };
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h2>ConfirmDialog 動作確認</h2>
+      <button
+        onClick={handleOpen}
+      >
+        削除ダイアログを開く
+      </button>
+
+      {/* ダイアログ呼び出し */}
+      <ConfirmDialog
+        open={open}
+        title="削除の確認"
+        message="このデータを削除してもよろしいですか？"
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+      />
+    </div>
+  );
+}

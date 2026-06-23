@@ -1,0 +1,5 @@
+function UserCount(props) {
+  const count = props.userCount;
+  // // ユーザー数（仮の値）
+  // const count = 3;   コメントにする
+・・・既存コード・・・

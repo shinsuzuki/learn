@@ -1,0 +1,13 @@
+import DogImageApp from "./components/APISample/DogImageApp"
+import "./App.css";
+
+function App() {
+  return (
+    <>
+      <h2>非同期処理の例</h2>
+      <DogImageApp />
+    </>
+  );
+}
+
+export default App;

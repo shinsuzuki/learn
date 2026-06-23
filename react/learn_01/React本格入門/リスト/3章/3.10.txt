@@ -1,0 +1,22 @@
+import UserTable from "../components/UserTable";
+import UserCount from "../components/UserCount";
+
+function UserList() {
+・・・既存コード・・・
+  // ユーザーデータの配列
+  const users = [
+    { id: 1, name: "山田太郎", age: 33 },
+    { id: 2, name: "佐藤花子", age: 28 },
+    { id: 3, name: "南原一平", age: 52 }
+  ];
+
+  return (
+    <div style={containerStyle}>
+      <div style={titleStyle}>ユーザー一覧</div>
+      <UserTable users={users} />
+      <UserCount userCount={users.length} />
+    </div>
+  );
+}
+
+export default UserList;

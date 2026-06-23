@@ -1,0 +1,7 @@
+    <UserRow
+        key={user.id}         // リスト表示のときのReactルール
+        id={user.id}          // propsとして渡す
+        name={user.name}
+        age={user.age}
+    />
+))}

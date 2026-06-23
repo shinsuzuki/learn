@@ -1,0 +1,23 @@
+import UserRow from "./UserRow";
+
+function UserTable() {
+・・・既存コード・・・
+  // ユーザーデータの配列
+  const users = [
+    { id: 1, name: "山田太郎", age: 33 },
+    { id: 2, name: "佐藤花子", age: 28 }
+  ];
+
+  return (
+・・・既存コード・・・
+    <tbody>
+        {users.map((user) => (
+          <UserRow
+            key={user.id}        // key設定は、繰り返し表示のときのReactルール
+            id={user.id}          // propsとして渡す
+            name={user.name}
+            age={user.age}
+          />
+        ))}
+    </tbody>
+・・・既存コード・・・

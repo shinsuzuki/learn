@@ -1,0 +1,95 @@
+/* オーバーレイ（背景の黒い部分） */
+.dialog-overlay {
+  /* スクロール位置に関係なく画面全体を覆う */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 背景を少し透かして背後の画面が見えるようにする */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  /* 表示時にふわっと現れる */
+  animation: fadeIn 0.2s ease;
+}
+
+/* ダイアログ本体 */
+.dialog-container {
+  /* 常に画面中央に配置するための固定配置 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* 50%基準で中央に寄せた後、要素分だけ戻して完全に中央にする */
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  /* 浮いているように見せる影 */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  /* モバイルで横幅がはみ出さないように割合で指定 */
+  width: 90%;
+  max-width: 400px;
+  /* 表示時に少しだけ動きを付ける */
+  animation: slideIn 0.3s ease;
+}
+
+/* ダイアログヘッダー */
+.dialog-header {
+  /* 上部は余白を広めに取って読みやすく */
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ダイアログコンテンツ */
+.dialog-content {
+  padding: 20px 24px;
+}
+
+.dialog-message {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  /* 行間を広げて複数行でも読みやすくする */
+  line-height: 1.5;
+}
+
+/* ダイアログアクション */
+.dialog-actions {
+  padding: 16px 24px;
+  /* ボタンを横並びにして右寄せ */
+  display: flex;
+  justify-content: flex-end;
+  /* ボタンの間隔を一定に保つ */
+  gap: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    /* 透明から不透明へ */
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    /* 少し上から滑り込む */
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,10 @@
+// ① export default を前に書く（よく使う形）
+export default function greet() {
+  console.log("Hello!");
+}
+
+// ② default export を後ろに書く（別の書き方）
+function greet() {
+  console.log("Hello!");
+}
+export default greet;

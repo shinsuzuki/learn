@@ -1,0 +1,3 @@
+import greetFunction from "./utils.js";     // 自由な名前を定義できる
+
+greetFunction(); 	// Hello!

@@ -1,0 +1,2 @@
+export const greet = () => console.log("Hello!"); 
+export const farewell = () => console.log("Goodbye!");

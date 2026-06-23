@@ -1,0 +1,112 @@
+/* フォーム全体のスタイル */
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* フォームグループ（各入力項目）のスタイル */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ラベルのスタイル */
+.form-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+}
+
+.required {
+  color: #ef4444;
+}
+
+/* 入力欄の基本スタイル */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* エラー時の入力欄スタイル */
+.form-input.error {
+  border-color: #ef4444;
+}
+
+.form-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* テキストエリアの追加スタイル */
+textarea.form-input {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* セレクトボックスの追加スタイル */
+select.form-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2714%27%20height%3D%278%27%20viewBox%3D%270%200%2014%208%27%20fill%3D%27none%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M1%201L7%207L13%201%27%20stroke%3D%27%236B7280%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  appearance: none;
+}
+
+/* ボタン領域のスタイル */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.form-actions button {
+  flex: 1;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .todo-form {
+    gap: 20px;
+  }
+
+  .form-input {
+    padding: 10px 14px;
+    font-size: 16px; /* iOSでズームを防ぐため16px以上 */
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo-form {
+    gap: 16px;
+  }
+
+  .form-input {
+    padding: 8px 12px;
+  }
+}

@@ -1,0 +1,13 @@
+import FocusInput from "./components/EventSample/FocusInput";
+import "./App.css";
+
+function App() {
+
+  // JSXの返却部分（画面に表示する内容）
+  return (
+    <>
+      <FocusInput />
+    </>
+  );
+}
+export default App;
