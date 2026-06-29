@@ -31,7 +31,8 @@ content-type: application/json
 }
 
 ###
-POST {{api_host}}/items/abc?q=xyz
+# POST {{api_host}}/items/abc?q=xyz
+POST {{api_host}}/items/abc
 content-type: application/json
 
 {
@@ -40,5 +41,9 @@ content-type: application/json
     "price": 45.2,
     "tax": 3.5
 }
+
+
+###
+GET {{api_host}}/items2/?limit=100&offset=0&order_by=created_at&tags=skill1&tags=skill2
 
 

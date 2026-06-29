@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from typing import Annotated, Literal
+from fastapi import FastAPI, Query
 from enum import StrEnum
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 app = FastAPI()
 
@@ -39,6 +40,8 @@ def get_model(model_name: ModelName):
 
 
 # ---------------------------------------- クエリーパラメータ
+# デフォルトにした場合は必須でなくなる
+# デフォルト値を設定せずにNoneを設定した場合はオプショナルになる
 @app.get("/items/")
 def read_items(skip: int = 0, limit: int = 10):
     fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
@@ -54,6 +57,7 @@ def read_items_q_options(item_id: str, q: str | None = None):
 
 
 # ---------------------------------------- リクエストボディ
+# pydantic、BaseModelを使用
 class Item(BaseModel):
     name: str
     description: str | None = None
@@ -63,10 +67,32 @@ class Item(BaseModel):
 
 @app.post("/items/")
 def create_item(item: Item):
+    item_dic = item.model_dump()
+    # for key in item_dic.keys():
+    #     print(f"{key}: {item_dic[key]}")
+
     return item
 
 
 # パスクエリー、ボディを取得
 @app.post("/items/{item_id}")
-def create_item2(item_id: str, q: str, item: Item):
+def create_item2(
+    item_id: str,
+    item: Item,
+    q: str | None = None,
+):
     return {"item_id": item_id, "q": q, **item.model_dump()}
+
+
+# ---------------------------------------- クエリーパラメータ(モデル)
+# クエリーをモデルで受け取る
+class FilterParams(BaseModel):
+    limit: int = Field(100, gt=0, le=100)
+    offset: int = Field(0, ge=0)
+    order_by: Literal["created_at", "updated_at"] = "created_at"
+    tags: list[str] = []
+
+
+@app.get("/items2/")
+def read_items2(filterParams: Annotated[FilterParams, Query()]):
+    return filterParams
