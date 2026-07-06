@@ -10,6 +10,15 @@ namespace MyFirstApp
             // パスを無視する
             //app.MapGet("/", () => "Hello World!");
 
+            // フォーマットを無視する
+#pragma warning disable format
+            if (app == null)
+            {
+                    int i = 0;
+                Console.WriteLine(i);
+            }
+#pragma warning restore format
+
 
             // 以下は全てのリクエストに対して処理を行う
 
