@@ -38,5 +38,47 @@ namespace IActionResultExample.Controllers
             //// ControllerBase クラスの File メソッドを使うと短く書ける。
             //return File(bytes, "application/csv", "sample.csv");
         }
+
+        [HttpGet("BadRequestResult")]
+        public IActionResult BadRequestResult()
+        {
+            return BadRequest("This is a bad request example.");
+        }
+
+
+        [HttpGet("NotFoundResult")]
+        public IActionResult NotFoundResult()
+        {
+            return NotFound("This is a not found example.");
+        }
+
+        [HttpGet("UnauthorizedResult")]
+        public IActionResult UnauthorizedResult()
+        {
+            return Unauthorized("This is a Unauthorized request example.");
+        }
+
+        [HttpGet("StatusCodeResult")]
+        public IActionResult StatusCodeResult()
+        {
+            return StatusCode(409, "コンフリエラー");
+        }
+
+        // よく使うレスポンス
+        //① 成功系（2xx）
+        //  Ok(object)
+        //  Created() / CreatedAtAction()
+        //  NoContent()
+        //② クライアントエラー系（4xx）
+        //  BadRequest("message")（400）
+        //  Unauthorized("message")（401）
+        //  Forbidden("message")（403）
+        //  NotFound("message")（404）
+        //  Conflict("message")（409）
+        //  UnprocessableEntity("message")（422）
+        //③ サーバーエラー系（5xx）
+        //  StatusCode(500)
+        //  Problem()（RFC7807準拠の標準エラーフォーマット）
+
     }
 }
