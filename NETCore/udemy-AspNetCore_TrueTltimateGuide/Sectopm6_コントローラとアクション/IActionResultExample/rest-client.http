@@ -1,0 +1,13 @@
+﻿### GET: クエリパラメータ付き
+GET http://localhost:5186/home/querycheck?id=100&name=shin
+Accept: application/json
+
+
+### POST: JSON を送信
+POST http://localhost:5186/home/bookrequest
+Content-Type: application/json
+
+{
+  "bookId": 1,
+  "author": "shin"
+}

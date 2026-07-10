@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IActionResultExample.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IActionResultExample.Controllers
 {
@@ -79,6 +80,44 @@ namespace IActionResultExample.Controllers
         //③ サーバーエラー系（5xx）
         //  StatusCode(500)
         //  Problem()（RFC7807準拠の標準エラーフォーマット）
+
+
+        // クエリーパラメータから指定
+        [HttpGet("QueryCheck")]
+        public IActionResult QueryCheck([FromQuery] int? id, [FromQuery] string? name)
+        //[HttpGet("QueryCheck/{id}/{name}")]
+        // ルートパラメータから値を取得
+        //public IActionResult QueryCheck([FromRoute] int? id, [FromRoute] string? name)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest("The 'id' parameter is required.");
+            }
+
+            // name が指定されていない場合の処理
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest("The 'name' parameter is required.");
+            }
+
+            // id が指定されている場合の処理
+            return Ok($"id:{id}, name:{name}");
+        }
+
+        [HttpPost("BookRequest")]
+        public IActionResult BookRequest(Book book)
+        // Formデータから値を取得する場合は、[FromForm] 属性を使用して、フォームデータから値をバインドすることができます。
+        //public IActionResult BookRequest([FromForm] Book book)
+        {
+            // get で 階層を表現してバインドも可能
+
+            if (book == null)
+            {
+                return BadRequest("The book parameter is required.");
+            }
+
+            return Ok(book);
+        }
 
     }
 }
