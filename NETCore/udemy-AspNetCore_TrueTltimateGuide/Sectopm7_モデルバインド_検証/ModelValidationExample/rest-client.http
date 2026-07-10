@@ -1,0 +1,17 @@
+﻿### POST: JSON を送信
+POST http://localhost:5174/home/regist
+Content-Type: application/json
+User-Agent: my-custom-agent
+
+{
+  "presonName": "scott",
+  "email": "shin@example.com",
+  "phone": "090-1234-5678",
+  "password": "password1234",
+  "confirmPassword": "password1234",
+  "price": 99.99,
+  "DateOfBirth": "2000-01-01",
+  "FromDate": "2024-01-01",
+  "ToDate": "2024-12-31",
+  "Tags": ["tag1", "tag2", "tag3"]
+}
