@@ -1,0 +1,22 @@
+﻿@model IEnumerable<string>
+
+@* viewにインジェクション *@
+@inject ICitiesService citiesServiceInView;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Cities</h1>
+@* viewにインジェクション *@
+@* @{
+    var cities = citiesServiceInView.GetCities();
+} *@
+
+<ul class="list">
+    @foreach (var city in Model)
+    @* @foreach (var city in cities)  *@
+    {
+        <li>@city</li>
+    }
+</ul>
