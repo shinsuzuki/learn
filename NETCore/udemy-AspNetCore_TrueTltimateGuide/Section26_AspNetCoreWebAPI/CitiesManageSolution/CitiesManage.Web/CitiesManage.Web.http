@@ -29,7 +29,7 @@ Accept: application/json
 }
 
 ### 更新
-PUT {{CitiesManage.Web_HostAddress}}/Cities/fabdaeb1-7531-4034-9db1-77c31ff14c7b
+PUT {{CitiesManage.Web_HostAddress}}/Cities/fabdaeb1-7531-4034-9db1-77c31ff14c7a
 Content-Type: application/json
 Accept: application/json
 

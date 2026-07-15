@@ -22,6 +22,8 @@ public class CitiesController : CustomControllerBase
     [HttpGet]
     public async Task<ActionResult<ApiSuccessResponse<List<City>>>> GetCity()
     {
+        //return InternalError("エラーが発生した。");
+
         var cities = await _context.Cities.OrderBy(x => x.CityName).ToListAsync();
         return Success(cities);
     }

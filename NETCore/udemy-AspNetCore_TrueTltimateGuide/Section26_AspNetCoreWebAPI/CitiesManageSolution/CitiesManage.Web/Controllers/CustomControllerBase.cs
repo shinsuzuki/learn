@@ -3,17 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 public class CustomControllerBase : ControllerBase
 {
-    //protected ActionResult ErrorResponse(int statusCode, params ErrorMessage[] messages)
-    //{
-    //    var error = new ApiErrorResponse
-    //    {
-    //        Messages = messages,
-    //        TraceId = HttpContext.TraceIdentifier
-    //    };
-
-    //    return StatusCode(statusCode, error);
-    //}
-
     /// <summary>
     /// 200 OK（成功レスポンス）
     /// </summary>
@@ -31,7 +20,11 @@ public class CustomControllerBase : ControllerBase
     /// </summary>
     protected ActionResult CreatedResponse<T>(T data)
     {
-        return StatusCode(201, data);
+        return StatusCode(201, new ApiSuccessResponse<T>
+        {
+            TraceId = HttpContext.TraceIdentifier,
+            Data = data
+        });
     }
 
     /// <summary>
@@ -50,7 +43,7 @@ public class CustomControllerBase : ControllerBase
         var response = new ApiErrorResponse
         {
             TraceId = HttpContext.TraceIdentifier,
-            Messages = messages.ToList()
+            Messages = messages
         };
 
         return StatusCode(statusCode, response);
@@ -72,5 +65,13 @@ public class CustomControllerBase : ControllerBase
     protected ActionResult BadRequestResponse(params ErrorMessage[] messages)
     {
         return ErrorResponse(400, messages);
+    }
+
+    /// <summary>
+    /// 500 Server Error（明示的に返す）
+    /// </summary>
+    protected ActionResult InternalError(string message = "予期しないエラーが発生しました")
+    {
+        return ErrorResponse(500, new ErrorMessage { Field = "", Message = message });
     }
 }
