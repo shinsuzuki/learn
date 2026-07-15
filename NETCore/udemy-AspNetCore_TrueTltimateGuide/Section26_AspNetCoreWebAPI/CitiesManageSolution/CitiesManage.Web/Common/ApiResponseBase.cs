@@ -11,4 +11,11 @@
         public required IEnumerable<ErrorMessage> Messages { get; set; }
         public string? TraceId { get; set; }
     }
+
+
+    public class ApiSuccessResponse<T>
+    {
+        public string? TraceId { get; set; }
+        public T? Data { get; set; }
+    }
 }

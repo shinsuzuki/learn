@@ -16,20 +16,23 @@ public class CitiesController : CustomControllerBase
         _context = context;
     }
 
+    // todo: ActionResultを返す(更新、削除はIAtionResultを返す)
+
     // GET: api/City
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<City>>> GetCity()
+    public async Task<ActionResult<ApiSuccessResponse<List<City>>>> GetCity()
     {
-        return await _context.Cities.OrderBy(x => x.CityName).ToListAsync();
+        var cities = await _context.Cities.OrderBy(x => x.CityName).ToListAsync();
+        return Success(cities);
     }
 
     // GET: api/City/5
     [HttpGet("{cityid}")]
-    public async Task<ActionResult<City>> GetCity(System.Guid cityid)
+    public async Task<ActionResult<ApiSuccessResponse<City>>> GetCity(System.Guid cityid)
     {
         var city = await _context.Cities.FindAsync(cityid);
 
-        throw new NotImplementedException("my-test!!");
+        // throw new NotImplementedException("my-test!!");
 
         if (city == null)
         {
@@ -37,7 +40,8 @@ public class CitiesController : CustomControllerBase
             return ErrorResponse((int)HttpStatusCode.NotFound, new ErrorMessage { Field = "", Message = "データ取得失敗" });
         }
 
-        return Ok(city);
+        return Success<City>(city);
+        //return Ok(city);
         //return city;
         //return StatusCode((int)HttpStatusCode.OK, city);
     }
@@ -48,11 +52,11 @@ public class CitiesController : CustomControllerBase
     [HttpPut("{cityid}")]
     public async Task<IActionResult> PutCity(System.Guid? cityid, City city)
     {
-        throw new Exception("test !!!!!!!!!!!!!!");
+        // throw new Exception("test !!!!!!!!!!!!!!");
 
         if (cityid != city.CityID)
         {
-            return BadRequest();
+            return BadRequestResponse(new ErrorMessage() { Field = "", Message = "バッドリクエストです。" });
         }
 
         _context.Entry(city).State = EntityState.Modified;
@@ -65,7 +69,7 @@ public class CitiesController : CustomControllerBase
         {
             if (!CityExists(cityid))
             {
-                return NotFound();
+                return NotFoundResponse();
             }
             else
             {
@@ -73,19 +77,20 @@ public class CitiesController : CustomControllerBase
             }
         }
 
-        return NoContent();
+        return NoContentResponse();
     }
 
     // POST: api/City
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<City>> PostCity(City city)
+    public async Task<ActionResult<ApiSuccessResponse<City>>> PostCity(City city)
     {
         _context.Cities.Add(city);
         await _context.SaveChangesAsync();
 
         // return CreatedAtAction("GetCity", new { cityid = city.CityID }, city);
-        return StatusCode((int)HttpStatusCode.Created, city);
+        //return StatusCode((int)HttpStatusCode.Created, city);
+        return CreatedResponse<City>(city);
     }
 
     // DELETE: api/City/5
@@ -95,13 +100,13 @@ public class CitiesController : CustomControllerBase
         var city = await _context.Cities.FindAsync(cityid);
         if (city == null)
         {
-            return NotFound();
+            return NotFoundResponse();
         }
 
         _context.Cities.Remove(city);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return NoContentResponse();
     }
 
     private bool CityExists(System.Guid? cityid)

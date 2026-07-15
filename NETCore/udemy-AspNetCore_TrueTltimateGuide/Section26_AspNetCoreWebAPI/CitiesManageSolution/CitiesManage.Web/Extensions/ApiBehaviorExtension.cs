@@ -7,7 +7,7 @@ namespace CitiesManage.Web.Extensions
     {
         public static IServiceCollection AddCustomModelStateResponse(this IServiceCollection services)
         {
-            services.Configure<ApiBehaviorOptions>(options =>
+            services.Configure((Action<ApiBehaviorOptions>)(options =>
             {
                 options.InvalidModelStateResponseFactory = context =>
                 {
@@ -25,7 +25,7 @@ namespace CitiesManage.Web.Extensions
 
                     return new BadRequestObjectResult(errorResponse);
                 };
-            });
+            }));
 
             return services;
         }
