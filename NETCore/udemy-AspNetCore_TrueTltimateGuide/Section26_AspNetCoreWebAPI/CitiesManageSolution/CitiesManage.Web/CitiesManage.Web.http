@@ -1,0 +1,46 @@
+@CitiesManage.Web_HostAddress = http://localhost:5022/api
+
+# GET {{CitiesManage.Web_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+### テスト
+GET {{CitiesManage.Web_HostAddress}}/Test/method
+Accept: application/text
+
+### 一覧取得
+GET {{CitiesManage.Web_HostAddress}}/Cities
+Accept: application/json
+
+### 取得
+GET {{CitiesManage.Web_HostAddress}}/Cities/FABDAEB1-7531-4034-9DB1-77C31FF14C79
+# エラー用↓
+# GET {{CitiesManage.Web_HostAddress}}/Cities/123
+Accept: application/json
+
+
+### 登録
+Post {{CitiesManage.Web_HostAddress}}/Cities/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "cityID": "fabdaeb1-7531-4034-9db1-77c31ff14c7a",
+  "cityName": "Tokyo"
+}
+
+### 更新
+PUT {{CitiesManage.Web_HostAddress}}/Cities/fabdaeb1-7531-4034-9db1-77c31ff14c7a
+Content-Type: application/json
+Accept: application/json
+
+{
+  "cityID": "fabdaeb1-7531-4034-9db1-77c31ff14c7a",
+  "cityName": "Tokyo2"
+}
+
+
+### 削除
+DELETE {{CitiesManage.Web_HostAddress}}/Cities/fabdaeb1-7531-4034-9db1-77c31ff14c7a
+Content-Type: application/json
+Accept: application/json
+
