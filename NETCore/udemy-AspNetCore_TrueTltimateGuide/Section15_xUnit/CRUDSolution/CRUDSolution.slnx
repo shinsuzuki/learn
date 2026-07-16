@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CRUDExample/CRUDExample.csproj" />
+  <Project Path="CRUDTests/CRUDTests.csproj" />
+  <Project Path="Entites/Entites.csproj" />
+  <Project Path="ServiceContracts/ServiceContracts.csproj" />
+  <Project Path="Services/Services.csproj" />
+</Solution>
