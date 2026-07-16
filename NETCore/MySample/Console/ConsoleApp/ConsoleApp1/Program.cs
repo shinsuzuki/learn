@@ -20,25 +20,26 @@ namespace ConsoleApp1
             // DI に登録
             services.AddSingleton<IConfiguration>(config);
 
-            // ★ Logging を DI に登録（NLog を差し込む）
+            // Logging を DI に登録
             services.AddLogging(builder =>
             {
                 builder.ClearProviders();
-                builder.SetMinimumLevel(LogLevel.Information);
+                builder.SetMinimumLevel(LogLevel.Trace);
                 builder.AddNLog();
             });
 
             // 任意のサービスを登録
             services.AddTransient<IMyService, MyService>();
             services.AddTransient<IMyBusiness, MyBusiness>();
+            services.AddTransient<IMyRepository, MyRepository>();
 
             var provider = services.BuildServiceProvider();
 
             // 実行
             var svc = provider.GetRequiredService<IMyService>();
             svc.Run("hello world!");
+
+            Console.ReadLine();
         }
-
-
     }
 }

@@ -29,7 +29,8 @@ namespace ConsoleApp1
             _logger.LogInformation($"MyService: Run: message={message}");
 
             // biz
-            _business.Execute("hello business");
+            var res = _business.Execute("hello business");
+            _logger.LogInformation($"result:{res}");
         }
     }
 }
