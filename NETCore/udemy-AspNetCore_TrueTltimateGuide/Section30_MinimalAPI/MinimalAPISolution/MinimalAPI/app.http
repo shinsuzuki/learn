@@ -1,0 +1,39 @@
+@HostAddress = http://localhost:5059
+
+### get /products 
+GET {{HostAddress}}/products
+Accept: text/plain
+
+### get /products/2
+GET {{HostAddress}}/products/2
+Accept: text/plain
+
+### post /prodcts
+POST {{HostAddress}}/products
+Content-Type: application/json
+
+{
+  "Id": 3,
+  "ProductName": "Smart Lightaaaaaaaaaaaaaaaaaaaaa"
+}
+
+### put /prodcts 
+PUT {{HostAddress}}/products/2
+Content-Type: application/json
+
+{
+  "Id": 2,
+  "ProductName": "Smart Light2"
+}
+
+### delete /prodcts 
+DELETE {{HostAddress}}/products/2
+Content-Type: application/json
+
+### get /prodcts/file-download
+GET {{HostAddress}}/products/file-download/100
+Accept: text/csv
+
+### get /prodcts/error-test
+GET {{HostAddress}}/products/error-test
+
