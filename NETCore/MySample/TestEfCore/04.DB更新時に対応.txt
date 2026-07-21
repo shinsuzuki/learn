@@ -1,0 +1,2 @@
+# 変更を上書き再生成
+dotnet ef dbcontext scaffold "..." Microsoft.EntityFrameworkCore.SqlServer -o Models --force
