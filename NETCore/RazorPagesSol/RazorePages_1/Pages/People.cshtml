@@ -3,22 +3,32 @@
 @{
     <h1>People</h1>
         
-    <table class="table">
-        <thead>
+    <table class="table table-bordered table-sm m-0 align-middle">
+        <thead class="table-light text-nowrap text-center">
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
+                <th class="" style="width: 50px;">選択</th>
+                <th class="">ID</th>
+                <th class="">Name</th>
+                <th class="">Age</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach (var item in Model.People)
             {
-                <tr>
-                    <th>@item.Id</th>
-                    <th>@item.Name</th>
-                    <th>@item.Age</th>
+                <tr x-data="{ selected: false }" :class="{ 'table-active': selected }">
+                    <td class="text-center">
+                        <!-- チェックボックスと selected 変数を連動 -->
+                        <input type="checkbox"
+                               class="form-check-input"
+                               x-model="selected"
+                               name="selectedIds"
+                               value="@item.Id" />
+                    </td>
+
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
                 </tr>
             }
         </tbody>
