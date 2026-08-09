@@ -4,6 +4,8 @@
         <% Response.Write("Hello from Classic ASP! " & Now()) %>
 
         <%
+            dim
+
             '---------- 変数
             Dim name
             name = "Taro"
